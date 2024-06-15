@@ -7,7 +7,7 @@ const MainHeader = () => {
     return (
         <nav className="navbar bg-base-100">
             <div className="flex-1">
-                <a className="btn btn-ghost lg:text-xl">
+                <a className="btn btn-ghost text-[17px] lg:text-xl">
                     <Image src={logo} width={40}/>
                     <span className='text-primary font-bold'>CreateVerse</span>
                 </a>
