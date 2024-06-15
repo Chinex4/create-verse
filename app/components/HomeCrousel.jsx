@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState, useEffect } from 'react'
 import firstImg from '@/public/carousel/1.jpg'
 import secondImg from '@/public/carousel/2.jpg'
