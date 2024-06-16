@@ -8,7 +8,7 @@ export default function Home() {
 		<>
 			<MainHeader />
 
-			<section className='mt-8 px-6'>
+			<section className='my-8 px-6'>
 				<div className='flex flex-col lg:flex-row-reverse space-y-6 lg:space-y-0 lg:items-center lg:justify-between'>
 					<div>
 						<HomeCrousel />
@@ -27,10 +27,11 @@ export default function Home() {
 				</div>
 			</section>
 
-			<section className="mt-8 px-6">
-				<h1 className="text-2xl font-[600] text-prim	ary ">
+			<section className="my-8 px-6">
+				<h1 className="text-3xl font-[800] text-prim	ary ">
 					Latest Drops
 				</h1>
+				<hr />
 			</section>
 		</>
 	);
