@@ -27,11 +27,11 @@ export default function Home() {
 				</div>
 			</section>
 
-			<section className="my-8 px-6">
-				<h1 className="text-3xl font-[800] text-prim	ary ">
+			<section className="my-10 px-6">
+				<h1 className="text-2xl lg:text-3xl font-[600]">
 					Latest Drops
 				</h1>
-				<hr />
+				<hr className="mt-4 border-secondary"/>
 			</section>
 		</>
 	);
