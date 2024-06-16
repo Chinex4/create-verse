@@ -3,15 +3,15 @@ import Image from 'next/image';
 
 export default function NFTCard({ image, price, availability, date }) {
   return (
-    <div className="card w-full lg:w-60 bg-base-100 shadow-xl">
-      <figure className="px-4 pt-4">
-        <Image src={image} alt="NFT Image" width={150} height={150} className="rounded-xl" />
+    <div className="card card-compact w-[15rem] lg:w-72 bg-base-100 shadow-xl">
+      <figure className="">
+        <Image src={image} alt="NFT Image" className="rounded-xl w-full" />
       </figure>
       <div className="card-body">
         <h2 className="card-title">
           {price} ETH <span className="text-sm">ETH</span>
         </h2>
-        <p>Availability: {availability}</p>
+        <div className={`badge badge-outline ${availability ? 'badge-success' : 'badge-error'}`}>{availability ? 'Available' : 'Not Available'}</div>
         <p>Created: {date}</p>
       </div>
     </div>

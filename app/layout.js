@@ -13,7 +13,7 @@ export default function RootLayout({ children }) {
 		<html
 			data-theme='light'
 			lang='en'>
-			<body className={inter.className}>
+			<body className={`${inter.className}`}>
 
 
 				<main className='lg:px-[4rem]'>{children}</main>
