@@ -27,11 +27,11 @@ export default function RootLayout({ children }) {
 					<div class='text-center text-white mt-8 space-y-6'>
 						<p class='text-sm'>
 							Quality customer support is the cornerstone of our NFT project.
-							We're here to assist you every step of the way, whether you have
+							We are here to assist you every step of the way, whether you have
 							questions, encounter issues, or simply want to share your
 							thoughts. Your satisfaction and success are our top priorities,
-							and we're committed to providing the best support experience
-							possible. Feel free to reach out to us, and together, we'll make
+							and we are committed to providing the best support experience
+							possible. Feel free to reach out to us, and together, we will make
 							your NFT journey a smooth and rewarding one.
 						</p>
 						<div>
