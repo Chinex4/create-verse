@@ -1,5 +1,5 @@
 // components/NFTCarousel.js
-import NFTCard from './NFTCard';
+import NFTCard from './NFTCARD';
 
 const nftData = [
   {
