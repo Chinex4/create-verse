@@ -26,6 +26,12 @@ export default function Home() {
 					</div>
 				</div>
 			</section>
+
+			<section className="mt-8 px-6">
+				<h1 className="text-2xl font-[600] text-prim	ary">
+					Latest Drops
+				</h1>
+			</section>
 		</>
 	);
 }
