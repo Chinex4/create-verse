@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import MainHeader from './components/MainHeader';
 import HomeCrousel from './components/HomeCrousel';
-import NFTCarousel from './components/NFTCarousel';
+import NFTCarousel from './components/NFTCAROUSEL';
 import Link from 'next/link';
 
 export default function Home() {
