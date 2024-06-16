@@ -31,7 +31,8 @@ export default function Home() {
 				<h1 className="text-2xl lg:text-3xl font-[600]">
 					Latest Drops
 				</h1>
-				<hr className="mt-4 border-secondary"/>
+				<hr className="mt-2 border-secondary"/>
+
 			</section>
 		</>
 	);
