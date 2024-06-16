@@ -8,7 +8,7 @@ import seventhimg from '@/public/TRENDING/IMG-20231010-WA0041.jpg';
 import eightimg from '@/public/TRENDING/IMG-20231010-WA0042.jpg';
 import ninthimg from '@/public/TRENDING/IMG-20231010-WA0043.jpg';
 import tenthimg from '@/public/TRENDING/IMG-20231010-WA0044.jpg';
-import Icon from '@/app/components/UI/Icon';
+import Icon from '@/app/components/Icon';
 
 
 export const nftData = [

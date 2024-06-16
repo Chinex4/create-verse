@@ -53,10 +53,13 @@ export default function Home() {
 			{/* Latest Drops */}
 
 			<section className='my-14 lg:my-[8rem] px-6'>
-				<h1 className='text-3xl lg:text-[3rem] font-bold text-primary text-center'>Latest Drops</h1>
+				<h1 className='text-3xl lg:text-[3rem] font-bold text-primary text-center'>
+					Latest Drops
+				</h1>
 				<NFTCarousel />
 			</section>
 
+			
 		</>
 	);
 }
