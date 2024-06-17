@@ -17,7 +17,7 @@ export default function NFTPage({ nft }) {
                 className="rounded-xl shadow-xl w-full md:w-[300px] lg:w-[400px]"
             />
             <div className="md:basis-[50%] lg:basis[60%]">
-                <h1 className="text-[3rem] font-bold">{nft.creator}</h1>
+                <h1 className="text-[2rem] lg:text-[3rem] font-bold">{nft.creator}</h1>
                 <p className="text-xl font-semibold flex items-center space-x-2">
                     <span>{nft.price}ETH</span>
                     <Image src={ethcoin} width={30} height={30} />
