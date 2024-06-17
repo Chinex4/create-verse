@@ -36,7 +36,7 @@ export default function Page({params}) {
 						<h1 className='text-[3rem] font-bold'>{nft.creator}</h1>
 						<p>{nft.price}</p>
 						<p>
-							
+							{nft.description}
 						</p>
 					</div>
 				</div>
