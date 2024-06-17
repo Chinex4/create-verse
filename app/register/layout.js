@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function Layout({ children }) {
 	return (
-		<div class='w-full md:min-h-screen flex flex-col md:flex-row'>
+		<div class='w-full lg:min-h-screen flex flex-col md:flex-row'>
 			<div class='w-full md:w-1/2 bg-primary p-8 md:p-10 lg:p-16'>
 				<div class='text-white space-y-8 md:space-y-12 lg:space-y-16'>
 					<Link
