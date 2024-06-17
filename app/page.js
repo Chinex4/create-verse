@@ -5,13 +5,15 @@ import HomeCrousel from './components/HomeCrousel';
 import NFTCarousel from './components/NFTCAROUSEL';
 import Link from 'next/link';
 import StepsContainer from './components/StepsContainer';
+import Footer from './components/Footer';
+
 
 export default function Home() {
 	return (
 		<>
 			<MainHeader />
 
-			<section className='my-8 px-6'>
+			<section className='my-8 px-6 lg:px-[4rem] mt-[7.5rem]'>
 				<div className='flex flex-col lg:flex-row-reverse space-y-6 lg:space-y-0 lg:items-center lg:justify-between'>
 					<div>
 						<HomeCrousel />
@@ -27,7 +29,7 @@ export default function Home() {
 						</p>
 						<Link
 							className='btn bg-primary text-white hover:bg-primary/70'
-							href={'/signup'}>
+							href={'/register/signup'}>
 							Get Started
 						</Link>
 					</div>
@@ -36,9 +38,9 @@ export default function Home() {
 
 			{/* Create and sell your NFTs */}
 
-			<section className='my-14 lg:my-[8rem] px-6'>
+			<section className='my-14 lg:my-[8rem] px-6 lg:px-[4rem]'>
 				<div className='text-center space-y-4'>
-					<h1 className='text-3xl lg:text-[3rem] font-bold text-secondary'>
+					<h1 className='text-3xl lg:text-[3rem] font-bold text-primary'>
 						Create and sell your NFTs
 					</h1>
 					<p className='text-stone-500'>
@@ -52,14 +54,14 @@ export default function Home() {
 
 			{/* Latest Drops */}
 
-			<section className='my-14 lg:my-[8rem] px-6'>
+			<section className='my-14 lg:my-[8rem] px-6 lg:px-[4rem]'>
 				<h1 className='text-3xl lg:text-[3rem] font-bold text-primary text-center'>
 					Latest Drops
 				</h1>
 				<NFTCarousel />
 			</section>
 
-			
+			<Footer />
 		</>
 	);
 }

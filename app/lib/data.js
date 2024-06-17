@@ -1,79 +1,76 @@
-import firstimg from '@/public/TRENDING/IMG-20231010-WA0035.jpg';
-import secondimg from '@/public/TRENDING/IMG-20231010-WA0036.jpg';
-import thirdimg from '@/public/TRENDING/IMG-20231010-WA0037.jpg';
-import fourthimg from '@/public/TRENDING/IMG-20231010-WA0038.jpg';
-import fifthimg from '@/public/TRENDING/IMG-20231010-WA0039.jpg';
-import sixthimg from '@/public/TRENDING/IMG-20231010-WA0040.jpg';
-import seventhimg from '@/public/TRENDING/IMG-20231010-WA0041.jpg';
-import eightimg from '@/public/TRENDING/IMG-20231010-WA0042.jpg';
-import ninthimg from '@/public/TRENDING/IMG-20231010-WA0043.jpg';
-import tenthimg from '@/public/TRENDING/IMG-20231010-WA0044.jpg';
+import firstimg from '@/public/TRENDING/1.jpg';
+import secondimg from '@/public/TRENDING/2.jpg';
+import thirdimg from '@/public/TRENDING/3.jpg';
+import fourthimg from '@/public/TRENDING/4.jpg';
+import fifthimg from '@/public/TRENDING/5.jpg';
+import sixthimg from '@/public/TRENDING/6.jpg';
+import seventhimg from '@/public/TRENDING/7.jpg';
+import eightimg from '@/public/TRENDING/8.jpg';
+import ninthimg from '@/public/TRENDING/9.jpg';
+import tenthimg from '@/public/TRENDING/10.jpg';
 import Icon from '@/app/components/Icon';
-
 
 export const nftData = [
 	{
+		id: '1',
 		image: firstimg,
-		price: 2.5,
-		availability: true,
-		date: '2024-06-01',
+		creator: 'John Doe',
+		price: 2.54,
 	},
 	{
+		id: '2',
 		image: secondimg,
-		price: 2.5,
-		availability: false,
-		date: '2024-06-03',
+		creator: 'John Doe',
+		price: 1.754,
 	},
 	{
+		id: '3',
 		image: thirdimg,
-		price: 2.5,
-		availability: false,
-		date: '2024-06-03',
+		creator: 'John Doe',
+		price: 1.754,
 	},
 	{
+		id: '4',
 		image: fourthimg,
-		price: 2.5,
-		availability: true,
-		date: '2024-06-03',
+		creator: 'John Doe',
+		price: 1.754,
 	},
 	{
+		id: '5',
 		image: fifthimg,
-		price: 2.5,
-		availability: false,
-		date: '2024-06-03',
+		creator: 'John Doe',
+		price: 1.754,
 	},
 	{
+		id: '6',
 		image: sixthimg,
-		price: 2.5,
-		availability: true,
-		date: '2024-06-03',
+		creator: 'John Doe',
+		price: 1.754,
 	},
 	{
+		id: '7',
 		image: seventhimg,
-		price: 2.5,
-		availability: true,
-		date: '2024-06-03',
+		creator: 'John Doe',
+		price: 1.754,
 	},
 	{
+		id: '8',
 		image: eightimg,
-		price: 2.5,
-		availability: true,
-		date: '2024-06-03',
+		creator: 'John Doe',
+		price: 1.754,
 	},
 	{
+		id: '9',
 		image: ninthimg,
-		price: 2.5,
-		availability: true,
-		date: '2024-06-03',
+		creator: 'John Doe',
+		price: 1.754,
 	},
 	{
+		id: '10',
 		image: tenthimg,
-		price: 2.5,
-		availability: true,
-		date: '2024-06-03',
+		creator: 'John Doe',
+		price: 1.754,
 	},
-
-	// Add 7 more items with the same structure
 ];
 
 export const STEPS = [
@@ -130,3 +127,8 @@ export const STEPS = [
 		info: 'Choose between auctions, fixed-price listings, and declining-price listings. You choose how you want to sell your NFTs, and we help you sell them!',
 	},
 ];
+
+export function getNFTData(id) {
+	const nft = nftData.filter((nft) => nft.id === id);
+	return nft[0]; 
+}

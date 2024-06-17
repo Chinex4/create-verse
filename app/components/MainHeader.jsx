@@ -5,20 +5,20 @@ import Image from 'next/image'
 
 const MainHeader = () => {
     return (
-        <nav className="navbar bg-base-100">
+        <nav className="navbar bg-base-100 fixed top-0 left-0 lg:px-[4rem] z-30 shadow-md">
             <div className="flex-1">
-                <a className="btn btn-ghost text-[17px] lg:text-xl">
+                <Link href={'/'} className="btn btn-ghost text-[17px] lg:text-xl hover:bg-transparent">
                     <Image src={logo} width={40}/>
                     <span className='text-primary font-bold'>CreateVerse</span>
-                </a>
+                </Link>
             </div>
             <div className="flex-none">
                 <ul className="menu menu-horizontal px-1">
                     <li>
-                        <Link className='hover:bg-transparent hover:text-secondary lg:text-lg lg:font-semibold' href="/login">Login</Link>
+                        <Link className='hover:bg-transparent hover:text-secondary lg:text-lg lg:font-semibold' href="/register/login">Login</Link>
                     </li>
                     <li>
-                        <Link className='hover:bg-transparent hover:text-secondary lg:text-lg lg:font-semibold' href="/signup">Sign Up</Link>
+                        <Link className='hover:bg-transparent hover:text-secondary lg:text-lg lg:font-semibold' href="/register/signup">Sign Up</Link>
                     </li>
                 </ul>
             </div>
