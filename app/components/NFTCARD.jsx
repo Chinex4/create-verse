@@ -16,7 +16,6 @@ export default function NFTCard({ id, image, creator, price }) {
       </figure>
       <div className="card-body">
         <h2 className="card-title font-bold">
-          <span className='font-light'>Creator:</span>
           {creator}
         </h2>
         <p className='text-stone-500 flex space-x-1 items-center '>
