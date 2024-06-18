@@ -24,15 +24,19 @@ const schema = yup.object().shape({
 
 export default function Page() {
 	const [successMessage, setSuccessMessage] = useState('');
+	const [errorMessage, setErrorMessage] = useState('');
+	const [isSubmitting, setIsSubmitting] = useState(false);
 	const {
 		register,
 		handleSubmit,
 		formState: { errors },
+		reset
 	} = useForm({
 		resolver: yupResolver(schema),
 	});
 
 	const onSubmit = async (data) => {
+		setIsSubmitting(true);
 		try {
 			const response = await fetch('/api/register', {
 				method: 'POST',
@@ -45,23 +49,36 @@ export default function Page() {
 			if (response.ok) {
 				toast.success('User created successfully!');
 				setSuccessMessage('User created successfully!');
+				reset();
 			} else {
-				toast.error('User creation failed');
+				toast.error(result.error || 'User creation failed');
+				setErrorMessage(result.error || 'User creation failed');
 			}
 		} catch (error) {
 			toast.error('An error occurred');
+			setErrorMessage(result.error || 'User creation failed');
+		} finally {
+			setIsSubmitting(false); // Stop loading indicator
 		}
 	};
 
 	return (
 		<div className='w-full bg-white px-6 py-8 md:p-10 lg:p-16'>
 			<h1 className='text-3xl md:text-4xl font-bold'>Sign Up</h1>
+			{errorMessage && (
+				<div className='mt-4 mb-4 p-4 bg-red-100 border border-red-400 text-red-700'>
+					{errorMessage}
+				</div>
+			)}
 			{successMessage && (
-				<div className='mb-4 p-4 bg-green-100 border border-green-400 text-green-700'>
+				<div className='mt-4 mb-4 p-4 bg-green-100 border border-green-400 text-green-700'>
 					{successMessage}
 				</div>
 			)}
-			<form className='mt-8' onSubmit={handleSubmit(onSubmit)}>
+			<form
+				method='POST'
+				className='mt-8'
+				onSubmit={handleSubmit(onSubmit)}>
 				<div className='mb-4'>
 					<label
 						className='block text-sm font-bold mb-2'
@@ -177,8 +194,14 @@ export default function Page() {
 				<div className='mb-4'>
 					<button
 						type='submit'
-						className='btn bg-primary hover:bg-primary/70 text-white w-full'>
-						Submit
+						disabled={isSubmitting} // Disable button while submitting
+						className={`btn bg-primary hover:bg-primary/70 text-white w-full ${
+							isSubmitting ? 'opacity-75 cursor-not-allowed' : ''
+						}`}>
+						{isSubmitting && (
+							<span className='loading loading-dots loading-md'></span>
+						)}
+						{isSubmitting ? 'Submitting...' : 'Submit'}
 					</button>
 				</div>
 				<div className='text-center'>
