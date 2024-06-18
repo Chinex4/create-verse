@@ -26,7 +26,7 @@ export default function Layout({ children }) {
 					</p>
 				</div>
 			</div>
-			<div class='w-full md:w-1/2 bg-white p-8 md:p-10 lg:p-16'>
+			<div class='w-full md:w-1/2 bg-white py-8 px-0 lg:px-12 md:py-10 lg:py-16'>
                 {children}
 			</div>
 		</div>
