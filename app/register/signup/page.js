@@ -34,7 +34,7 @@ export default function Page() {
 
 	const onSubmit = async (data) => {
 		try {
-			const response = await fetch('api/register', {
+			const response = await fetch('/api/register', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
