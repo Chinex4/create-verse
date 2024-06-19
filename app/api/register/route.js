@@ -19,25 +19,26 @@ export async function POST(request) {
 		}
 
 		// Check if user with the same email already exists
-		const existingUser = await prisma.user.findUnique({
+		const existingUserByEmail = await prisma.user.findUnique({
 			where: {
 				email: email,
 			},
 		});
 
-		if (existingUser) {
+		if (existingUserByEmail) {
 			return NextResponse.json(
 				{ error: 'User with this email already exists' },
 				{ status: 400 },
 			);
 		}
-		const existingUsername = await prisma.user.findUnique({
+
+		const existingUserByUsername = await prisma.user.findUnique({
 			where: {
 				username: username,
 			},
 		});
 
-		if (existingUsername) {
+		if (existingUserByUsername) {
 			return NextResponse.json(
 				{ error: 'Username already exists' },
 				{ status: 400 },
@@ -65,7 +66,6 @@ export async function POST(request) {
 			{ error: 'User creation failed', details: error.message },
 			{ status: 500 },
 		);
-	} finally {
-		await prisma.$disconnect(); // Disconnect Prisma client
-	}
+	} 
+	
 }
