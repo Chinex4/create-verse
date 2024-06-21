@@ -7,7 +7,11 @@ import { useRouter } from 'next/navigation';
 export default function NFTCard({ id, image, creator, price }) {
   const router = useRouter()
   const handleClick = () => {
-    router.push(`/${id}`)
+    if (router.pathname === "/dashboard") {
+      router.push(`/dashboard/${id}`)
+    } else {
+      router.push(`/${id}`)
+    }
   }
   return (
     <div onClick={handleClick} className="card lg:hover:-translate-y-4 hover:cursor-pointer duration-500 card-compact w-[15rem] lg:w-72 bg-base-100 shadow-xl">

@@ -205,10 +205,11 @@ export default function Page() {
 					</button>
 				</div>
 				<div className='text-center'>
+					Already have an account? {' '}
 					<Link
 						href='/register/login'
-						className='text-primary'>
-						Already have an account? Log in
+						className='text-primary hover:text-primary/50 font-bold'>
+						Log in
 					</Link>
 				</div>
 			</form>

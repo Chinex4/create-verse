@@ -119,10 +119,11 @@ export default function Page() {
 					</button>
 				</div>
 				<div className='text-center'>
+					Don't have an account? {' '}
 					<Link
 						href='/register/signup'
-						className='text-primary'>
-						Don't have an account? Sign Up
+						className='text-primary hover:text-primary/50 font-bold'>
+						Sign Up
 					</Link>
 				</div>
 			</form>

@@ -1,58 +1,34 @@
-'use client';
-
-import { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { toast } from 'react-toastify';
+import HomeCarousel from '../components/HomeCrousel';
+import NFTCarousel from '../components/NFTCAROUSEL';
 
 export default function Dashboard() {
-	const [user, setUser] = useState(null);
-	const router = useRouter();
-
-	useEffect(() => {
-		const token = localStorage.getItem('token');
-
-		if (!token) {
-			router.push('/register/login');
-		} else {
-			fetch('/api/user', {
-				headers: {
-					Authorization: `Bearer ${token}`,
-				},
-			})
-				.then((response) => response.json())
-				.then((data) => {
-					if (data.error) {
-						toast.error(data.error);
-						router.push('/register/login');
-					} else {
-						setUser(data);
-					}
-				})
-				.catch(() => {
-					toast.error('Failed to fetch user data');
-					router.push('/register/login');
-				});
-		}
-	}, [router]);
-
-	if (!user) {
-		return <div>Loading...</div>;
-	}
+	
 
 	return (
-		<div className='w-full bg-white px-6 py-8 md:p-10 lg:p-16'>
-			<h1 className='text-3xl md:text-4xl font-bold'>Dashboard</h1>
-			<div className='mt-8'>
-				<p className='text-lg'>
-					<strong>Username:</strong> {user.username}
-				</p>
-				<p className='text-lg'>
-					<strong>First Name:</strong> {user.firstName}
-				</p>
-				<p className='text-lg'>
-					<strong>Last Name:</strong> {user.lastName}
-				</p>
-			</div>
-		</div>
+		<>
+			<section className='my-8 px-6 lg:px-[4rem] mt-[7.5rem]'>
+				<div className='flex flex-col lg:flex-row-reverse space-y-6 lg:space-y-0 lg:items-center lg:justify-between'>
+					<div>
+						<HomeCarousel />
+					</div>
+					<div className='lg:basis-[40%] text-center lg:text-left space-y-4'>
+						<h1 className='text-3xl lg:text-5xl text-primary font-bold'>
+							Explore a vast array of NFTs from artists around the
+							globe, discover a whole new way to own, trade and experience art.
+						</h1>
+					</div>
+				</div>
+			</section>
+
+			{/* Latest Drops */}
+
+			<section className='my-14 lg:my-[8rem] px-6 lg:px-[4rem]'>
+				<h1 className='text-3xl lg:text-[3rem] font-bold text-primary text-center'>
+					Latest Drops
+				</h1>
+				<NFTCarousel />
+			</section>
+
+		</>
 	);
 }
