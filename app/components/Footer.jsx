@@ -11,7 +11,7 @@ const Footer = () => {
                 <Image
                     src={logo2}
                     width={50}
-													alt="secondlogo"
+alt="secondlogo"
                 />
                 <span>CreateVerse</span>
             </h1>
