@@ -1,8 +1,6 @@
 import { notFound } from 'next/navigation';
-import { getNFTData } from '../lib/data';
-import NFTPage from '../components/NFTPage';
-import DashboardFooter from '../components/DashboardFooter';
-import DashboardHeader from '../components/DashboardHeader';
+import { getNFTData } from '@/app/lib/data';
+import NFTPage from '@/app/components/NFTPage';
 
 export function generateMetadata({ params }) {
 	const nft = getNFTData(params.nftslug);
