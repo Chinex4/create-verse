@@ -11,7 +11,7 @@ export default function NFTPage({ nft }) {
         <div className="mt-32 px-6 lg:px-[4rem] flex flex-col md:flex-row justify-between">
             <Image
                 src={nft.image}
-                alt={nft.creator}
+                alt={nft.creator || "nftcreator"}
                 width={400}
                 height={400}
                 className="rounded-xl shadow-xl w-full md:w-[300px] lg:w-[400px]"
