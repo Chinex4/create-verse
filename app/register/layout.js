@@ -12,7 +12,7 @@ export default function Layout({ children }) {
 						class='text-xl md:text-2xl lg:text-6xl font-bold flex items-center space-x-2'>
 						<Image
 							src={logo2}
-							width={40}
+							width={40} alt="logo2"
 						/>
 						<span className='font-bold'>CreateVerse</span>
 					</Link>
