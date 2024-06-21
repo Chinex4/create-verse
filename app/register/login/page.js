@@ -41,10 +41,8 @@ export default function Page() {
 			if (response.ok) {
 				toast.success('Login successful!');
 				localStorage.setItem('token', result.token);
-				setTimeout(() => {
-					router.push('/dashboard');
-				}, 2000);
 				reset();
+				router.push('/dashboard');
 			} else {
 				toast.error(result.error || 'Login failed');
 				setErrorMessage(result.error || 'Login failed');
