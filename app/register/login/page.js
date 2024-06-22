@@ -128,7 +128,7 @@ export default function Page() {
 				</div>
 				<div className='text-center mt-4'>
 					<Link
-						href='/register/forgot-password'
+						href='/register/forgotpassword'
 						className='text-primary'>
 						Forgot Password?
 					</Link>
