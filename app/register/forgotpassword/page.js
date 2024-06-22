@@ -4,16 +4,13 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import Link from 'next/link';
 import { toast } from 'react-toastify';
-import { useRouter } from 'next/navigation';
 
 const schema = yup.object().shape({
-	username: yup.string().required('Username is required'),
-	password: yup.string().required('Password is required'),
+	email: yup.string().email('Invalid email').required('Email is required'),
 });
 
-export default function Page() {
+export default function ForgotPasswordPage() {
 	const [errorMessage, setErrorMessage] = useState('');
 	const [isSubmitting, setIsSubmitting] = useState(false);
 	const {
@@ -25,12 +22,10 @@ export default function Page() {
 		resolver: yupResolver(schema),
 	});
 
-	const router = useRouter();
-
 	const onSubmit = async (data) => {
 		setIsSubmitting(true);
 		try {
-			const response = await fetch('/api/login', {
+			const response = await fetch('/api/forgotpassword', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
@@ -39,17 +34,15 @@ export default function Page() {
 			});
 			const result = await response.json();
 			if (response.ok) {
-				toast.success('Login successful!');
-				localStorage.setItem('token', result.token);
+				toast.success('Password reset link sent!');
 				reset();
-				router.push('/dashboard');
 			} else {
-				toast.error(result.error || 'Login failed');
-				setErrorMessage(result.error || 'Login failed');
+				toast.error(result.error || 'Failed to send reset link');
+				setErrorMessage(result.error || 'Failed to send reset link');
 			}
 		} catch (error) {
 			toast.error('An error occurred');
-			setErrorMessage('Login failed');
+			setErrorMessage('Failed to send reset link');
 		} finally {
 			setIsSubmitting(false);
 		}
@@ -57,52 +50,31 @@ export default function Page() {
 
 	return (
 		<div className='w-full bg-white px-6 py-8 md:p-10 lg:p-16'>
-			<h1 className='text-3xl md:text-4xl font-bold'>Login</h1>
+			<h1 className='text-3xl md:text-4xl font-bold'>Forgot Password</h1>
 			{errorMessage && (
 				<div className='mt-4 mb-4 p-4 bg-red-100 border border-red-400 text-red-700'>
 					{errorMessage}
 				</div>
 			)}
 			<form
-				method='POST'
+				method='post'
 				className='mt-8'
 				onSubmit={handleSubmit(onSubmit)}>
 				<div className='mb-4'>
 					<label
 						className='block text-sm font-bold mb-2'
-						htmlFor='username'>
-						Username
+						htmlFor='email'>
+						Email
 					</label>
 					<input
-						id='username'
-						name='username'
-						type='text'
-						{...register('username')}
+						id='email'
+						name='email'
+						type='email'
+						{...register('email')}
 						className='input input-bordered w-full'
 					/>
-					{errors.username && (
-						<p className='text-red-500 text-xs mt-2'>
-							{errors.username.message}
-						</p>
-					)}
-				</div>
-				<div className='mb-4'>
-					<label
-						className='block text-sm font-bold mb-2'
-						htmlFor='password'>
-						Password
-					</label>
-					<input
-						id='password'
-						name='password'
-						type='password'
-						{...register('password')}
-						className='input input-bordered w-full'
-					/>
-					{errors.password && (
-						<p className='text-red-500 text-xs mt-2'>
-							{errors.password.message}
-						</p>
+					{errors.email && (
+						<p className='text-red-500 text-xs mt-2'>{errors.email.message}</p>
 					)}
 				</div>
 				<div className='mb-4'>
@@ -117,21 +89,6 @@ export default function Page() {
 						)}
 						{isSubmitting ? 'Submitting...' : 'Submit'}
 					</button>
-				</div>
-				<div className='text-center'>
-					Don't have an account?{' '}
-					<Link
-						href='/register/signup'
-						className='text-primary hover:text-primary/50 font-bold'>
-						Sign Up
-					</Link>
-				</div>
-				<div className='text-center mt-4'>
-					<Link
-						href='/register/forgot-password'
-						className='text-primary'>
-						Forgot Password?
-					</Link>
 				</div>
 			</form>
 		</div>
