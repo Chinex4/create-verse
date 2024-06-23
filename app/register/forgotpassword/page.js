@@ -43,7 +43,7 @@ export default function ForgotPasswordPage() {
                 reset();
 				setTimeout(() => {
 					router.push("/register/login")
-				}, 500)
+				}, 1500)
             } else {
                 toast.error(result.error || 'Failed to send reset link');
                 setErrorMessage(result.error || 'Failed to send reset link');

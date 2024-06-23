@@ -20,6 +20,7 @@ const schema = yup.object().shape({
 
 export default function CreatePasswordPage() {
 	const [errorMessage, setErrorMessage] = useState('');
+	const [successMessage, setsuccessMessage] = useState('');
 	const [isSubmitting, setIsSubmitting] = useState(false);
     const {
 			register,
@@ -59,7 +60,10 @@ export default function CreatePasswordPage() {
 			const result = await response.json();
 			if (response.ok) {
 				toast.success('Password reset successful!');
-				router.push('/register/login');
+				setsuccessMessage("Password reset successful. You can now log in.")
+				setTimeout(() => {
+					router.push('/register/login');
+				}, 1500);
 			} else {
 				toast.error(result.error || 'Password reset failed');
 				setErrorMessage(result.error || 'Password reset failed');
@@ -74,10 +78,15 @@ export default function CreatePasswordPage() {
 
 	return (
 		<div className='w-full bg-white px-6 py-8 md:p-10 lg:p-16'>
-			<h1 className='text-3xl md:text-4xl font-bold'>Create New Password</h1>
+			<h1 className='text-2xl md:text-4xl font-bold'>Create New Password</h1>
 			{errorMessage && (
 				<div className='mt-4 mb-4 p-4 bg-red-100 border border-red-400 text-red-700'>
 					{errorMessage}
+				</div>
+			)}
+			{successMessage && (
+				<div className='mt-4 mb-4 p-4 bg-green-100 border border-green-400 text-green-700'>
+					{successMessage}
 				</div>
 			)}
 			<form
