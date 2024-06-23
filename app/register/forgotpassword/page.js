@@ -6,14 +6,17 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { toast } from 'react-toastify';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 const schema = yup.object().shape({
     email: yup.string().email('Invalid email').required('Email is required'),
 });
 
 export default function ForgotPasswordPage() {
+    const [successMessage, setSuccessMessage] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
     const [isSubmitting, setIsSubmitting] = useState(false);
+	const router = useRouter();
     const {
         register,
         handleSubmit,
@@ -27,7 +30,7 @@ export default function ForgotPasswordPage() {
         setIsSubmitting(true);
         try {
             const response = await fetch('/api/forgotpassword', {
-                method: 'PUT',
+                method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
@@ -36,7 +39,11 @@ export default function ForgotPasswordPage() {
             const result = await response.json();
             if (response.ok) {
                 toast.success('Password reset link sent!');
+				setSuccessMessage("Password reset link sent. Check your mail!")
                 reset();
+				setTimeout(() => {
+					router.push("/register/login")
+				}, 500)
             } else {
                 toast.error(result.error || 'Failed to send reset link');
                 setErrorMessage(result.error || 'Failed to send reset link');
@@ -56,6 +63,11 @@ export default function ForgotPasswordPage() {
 				{errorMessage && (
 					<div className='mt-4 mb-4 p-4 bg-red-100 border border-red-400 text-red-700'>
 						{errorMessage}
+					</div>
+				)}
+				{successMessage && (
+					<div className='mt-4 mb-4 p-4 bg-green-100 border border-green-400 text-green-700'>
+						{successMessage}
 					</div>
 				)}
 				<p className='text-sm mt-4 text-info'>
