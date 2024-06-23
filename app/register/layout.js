@@ -14,7 +14,7 @@ export default function Layout({ children }) {
 				<div class='text-white space-y-8 md:space-y-12 lg:space-y-16'>
 					<Link
 						href='/'
-						class='text-xl md:text-2xl lg:text-6xl font-bold flex items-center space-x-2'>
+						class='text-xl md:text-2xl lg:text-5xl font-bold flex items-center space-x-2'>
 						<Image
 							src={logo2}
 							width={40}
