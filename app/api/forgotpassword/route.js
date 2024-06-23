@@ -40,7 +40,7 @@ export async function POST(request) {
 			to: email,
 			subject: 'Password Reset',
 			html: `<p style="font-size: 1.5rem;">You requested for a password reset</p> 
-                <p>Click this <a href='${process.env.NEXT_PUBLIC_BASE_URL}/createpassword?token=${token}'>reset link</a> to set a new password</p>`,
+                <p>Click this <a href='${process.env.NEXT_PUBLIC_BASE_URL}/register/createpassword?token=${token}'>reset link</a> to set a new password</p>`,
 		};
 
 		await transporter.sendMail(mailOptions);
