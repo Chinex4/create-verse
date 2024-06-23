@@ -46,7 +46,7 @@ export default function Layout({ children }) {
 		);
 	}
 	return (
-		<div className='w-full bg-white px-6 py-8 md:p-10 lg:p-16'>
+		<div className='w-full bg-white'>
 			<DashboardHeader user={user} />
                 {children}
 			<DashboardFooter />
