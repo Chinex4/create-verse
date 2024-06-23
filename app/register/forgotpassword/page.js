@@ -27,7 +27,7 @@ export default function ForgotPasswordPage() {
         setIsSubmitting(true);
         try {
             const response = await fetch('/api/forgotpassword', {
-                method: 'POST',
+                method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
                 },

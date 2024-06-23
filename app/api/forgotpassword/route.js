@@ -7,9 +7,9 @@ import jwt from 'jsonwebtoken';
 const prisma = new PrismaClient();
 
 export default async function POST(request) {
-	// if (request.method !== 'POST') {
-	// 	return NextResponse.json({ error: 'Method not allowed' }, { status: 405 });
-	// }
+	if (request.method !== 'PUT') {
+		return NextResponse.json({ error: 'Method not allowed' }, { status: 405 });
+	}
 
 	try {
 		const body = await request.json();
