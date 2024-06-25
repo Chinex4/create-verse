@@ -25,7 +25,7 @@ export default function Page({ params }) {
 	return (
 		<div>
 			<MainHeader />
-			<NFTPage nft={nft} />
+			<NFTPage isLoggedin={false} nft={nft} />
 			<footer className='mt-10'>
 				<Footer />
 			</footer>

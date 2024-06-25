@@ -4,10 +4,10 @@ import ethCoin from '@/public/coins.png'
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
-export default function NFTCard({ id, image, creator, price }) {
+export default function NFTCard({ id, image, creator, price, isLoggedIn }) {
   const router = useRouter()
   const handleClick = () => {
-    if (router.pathname === "/dashboard") {
+    if (isLoggedIn) {
       router.push(`/dashboard/${id}`)
     } else {
       router.push(`/${id}`)

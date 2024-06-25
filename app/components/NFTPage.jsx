@@ -4,8 +4,17 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import ethcoin from "@/public/coins.png";
 
-export default function NFTPage({ nft }) {
+export default function NFTPage({ nft, isLoggedin }) {
     const router = useRouter();
+
+    const handleClick = () => {
+        if (isLoggedin) {
+            router.push('/dashboard/connect-wallet')
+        }
+        else{
+            router.push("/register/login")
+        }
+    }
 
     return (
         <div className="mt-32 px-6 lg:px-[4rem] flex flex-col md:flex-row justify-between">
@@ -24,7 +33,7 @@ export default function NFTPage({ nft }) {
                 </p>
                 <p>{nft.description}</p>
                 <button
-                    onClick={() => router.push('/register/login')}
+                    onClick={handleClick}
                     className="mt-4 bg-primary text-white font-bold py-2 px-4 rounded-lg hover:bg-primary-focus"
                 >
                     Buy NFT

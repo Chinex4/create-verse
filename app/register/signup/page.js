@@ -6,20 +6,28 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import Link from 'next/link';
 import { toast } from 'react-toastify';
+import { useRouter } from 'next/navigation';
 
 const schema = yup.object().shape({
-	username: yup.string().required('Username is required'),
+	username: yup
+		.string()
+		.matches(/^[a-zA-Z0-9]+$/, 'Username must be alphanumeric')
+		.required('Username is required'),
 	firstName: yup.string().required('First Name is required'),
 	lastName: yup.string().required('Last Name is required'),
 	email: yup.string().email('Invalid email').required('Email is required'),
 	password: yup
 		.string()
 		.min(6, 'Password must be at least 6 characters')
+		.matches(/[A-Z]/, 'Password must contain at least one uppercase letter')
+		.matches(/[a-z]/, 'Password must contain at least one lowercase letter')
+		.matches(/[0-9]/, 'Password must contain at least a number')
+		.matches(/[!@#$%^&*()<>?":{}|<>]/, 'Password must contain at least one special character')
 		.required('Password is required'),
 	confirmPassword: yup
 		.string()
 		.oneOf([yup.ref('password'), null], 'Passwords must match')
-		.required('Confirm Password is required'),
+		.required('Please confirm your password'),
 });
 
 export default function Page() {
@@ -34,6 +42,8 @@ export default function Page() {
 	} = useForm({
 		resolver: yupResolver(schema),
 	});
+
+	const router = useRouter()
 
 	const onSubmit = async (data) => {
 		setIsSubmitting(true);
@@ -50,6 +60,9 @@ export default function Page() {
 				toast.success('User created successfully!');
 				setSuccessMessage('User created successfully!');
 				reset();
+				setTimeout(() => {
+					router.push("/register/login")
+				}, 2000)
 			} else {
 				toast.error(result.error || 'User creation failed');
 				setErrorMessage(result.error || 'User creation failed');

@@ -9,6 +9,7 @@ import Footer from './components/Footer';
 
 
 export default function Home() {
+	
 	return (
 		<>
 			<MainHeader />
@@ -58,7 +59,7 @@ export default function Home() {
 				<h1 className='text-3xl lg:text-[3rem] font-bold text-primary text-center'>
 					Latest Drops
 				</h1>
-				<NFTCarousel />
+				<NFTCarousel isLoggedIn={false} />
 			</section>
 
 			<Footer />

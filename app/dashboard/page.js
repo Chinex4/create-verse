@@ -26,7 +26,7 @@ export default function Dashboard() {
 				<h1 className='text-3xl lg:text-[3rem] font-bold text-primary text-center'>
 					Latest Drops
 				</h1>
-				<NFTCarousel />
+				<NFTCarousel isLoggedIn={true} />
 			</section>
 
 		</>
