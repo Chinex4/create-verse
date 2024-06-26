@@ -29,7 +29,7 @@ const DashboardFooter = () => {
                 <div>
                     <Link
                         href='mailto:createverse@gmail.com'
-                        class='block lg:inline-block bg-white text-primary transition-all hover:shadow-2xl px-6 py-3 rounded-md'>
+                        class='block lg:inline-block bg-white hover:bg-white/50 text-primary transition-all hover:shadow-2xl px-6 py-3 rounded-md'>
                         Contact Us
                     </Link>
                 </div>

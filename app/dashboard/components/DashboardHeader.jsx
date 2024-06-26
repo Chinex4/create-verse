@@ -15,16 +15,21 @@ const DashboardHeader = ({ dp, user }) => {
         router.push('/register/login');
     }
     return (
-        <nav className="navbar bg-base-100 fixed top-0 left-0 lg:px-[4rem] z-30 shadow-md">
+        <nav className="navbar bg-base-100 fixed top-0 left-0 lg:px-[4rem] z-30 shadow-md justify-between">
             <div className="flex-1">
-                <Link href={'/'} className="btn btn-ghost text-[17px] lg:text-xl hover:bg-transparent">
+                <Link href={'/dashboard'} className="btn btn-ghost text-[17px] lg:text-xl hover:bg-transparent">
                     <Image src={logo} width={40} alt="logo" />
-                    <span className='text-primary font-bold'>CreateVerse</span>
+                    <span className='hidden md:block text-primary font-bold'>CreateVerse</span>
                 </Link>
             </div>
             <div className="flex-none gap-2">
-                <div className="">
-                    <p className='text-lg font-bold'>{user.username}</p>
+                <div className="flex space-x-2 md:space-x-4 items-center">
+                    {!user.walletAddress && (
+                        <Link href="/dashboard/connect-wallet" className='btn btn-ghost hover:bg-transparent'>
+                            Connect Wallet
+                        </Link>
+                    )}
+                    <p className='text-sm font-bold'>{user.username}</p>
                 </div>
                 <div className="dropdown dropdown-end">
                     <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">

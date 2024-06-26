@@ -16,6 +16,8 @@ const schema = yup.object().shape({
 export default function Page() {
 	const [errorMessage, setErrorMessage] = useState('');
 	const [isSubmitting, setIsSubmitting] = useState(false);
+	const [successMessage, setsuccessMessage] = useState('');
+
 	const {
 		register,
 		handleSubmit,
@@ -40,6 +42,7 @@ export default function Page() {
 			const result = await response.json();
 			if (response.ok) {
 				toast.success('Login successful!');
+				setsuccessMessage('Login Successful!');
 				localStorage.setItem('token', result.token);
 				reset();
 				router.push('/dashboard');
@@ -63,7 +66,12 @@ export default function Page() {
 					{errorMessage}
 				</div>
 			)}
-			
+			{successMessage && (
+				<div className='mt-4 mb-4 p-4 bg-green-100 border border-green-400 text-green-700'>
+					{successMessage}
+				</div>
+			)}
+
 			<form
 				method='POST'
 				className='mt-8'

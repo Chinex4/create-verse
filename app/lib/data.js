@@ -138,6 +138,25 @@ export const STEPS = [
     },
 ];
 
+// export const wallets = [
+//     {
+//         id: 1,
+//         name: "Meta Mask",
+//         // image: ,
+//     },
+//     {
+//         id: 1,
+//         name: "Phantom",
+//         // image: ,
+//     },
+//     {
+//         id: 1,
+//         name: "Ton",
+//         // image: ,
+//     }
+    
+// ]
+
 export function getNFTData(id) {
     const nft = nftData.filter((nft) => nft.id === id);
     return nft[0]; 
