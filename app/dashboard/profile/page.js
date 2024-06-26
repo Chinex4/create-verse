@@ -61,6 +61,12 @@ export default function Page() {
 						{user.firstName} {user.lastName}
 					</h2>
 					<p>@{user.username}</p>
+					<p>
+						Wallet Address: 
+						<span className='font-light font-mono'>
+							{user.walletAddress ? user.walletAddress : 'NIL. Please connect your wallet'}
+						</span>
+					</p>
 				</div>
 			</section>
 
