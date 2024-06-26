@@ -44,8 +44,7 @@ const DashboardHeader = ({ dp, user }) => {
                                 <span className="badge">New</span>
                             </Link>
                         </li>
-                        <li><Link href={"/dashboard/connect-wallet"}>Collections</Link></li>
-                        <li><Link href={"/dashboard/settings"}>Settings</Link></li>
+                        <li><Link href={"/dashboard/collections"}>Collections</Link></li>
                         <li><Link href={"/dashboard/settings"}>Settings</Link></li>
                         <li><button onClick={handleLogout}>Logout</button></li>
                     </ul>

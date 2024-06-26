@@ -9,7 +9,7 @@ const MainHeader = () => {
             <div className="flex-1">
                 <Link href={'/'} className="btn btn-ghost text-[17px] lg:text-xl hover:bg-transparent">
                     <Image src={logo} width={40} alt="logo"/>
-                    <span className='text-primary font-bold'>CreateVerse</span>
+                    <span className='text-primary  font-bold'>CreateVerse</span>
                 </Link>
             </div>
             <div className="flex-none">
