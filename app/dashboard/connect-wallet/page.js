@@ -50,6 +50,7 @@ export default function Page() {
 				setsuccessMessage('Wallet connected successfully!');
 				reset();
 				router.push('/dashboard');
+				router.refresh();
 			} else {
 				toast.error(result.error || 'Wallet connection failed');
 				setErrorMessage(result.error || 'Wallet connection failed');

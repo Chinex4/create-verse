@@ -22,6 +22,17 @@ export async function POST(request) {
 			);
 		}
 
+		const existingUser = await prisma.user.findUnique({
+			where: { walletAddress },
+		});
+
+		if (existingUser) {
+			return NextResponse.json(
+				{ error: 'Wallet address already exists' },
+				{ status: 400 },
+			);
+		}
+
 		await prisma.user.update({
 			where: { id: decoded.userId },
 			data: { walletAddress },
@@ -34,7 +45,7 @@ export async function POST(request) {
 	} catch (error) {
 		// console.log('Error connecting wallet:', error);
 		return NextResponse.json(
-			{ error: "Failed to connect wallet!" },
+			{ error: 'Failed to connect wallet!' },
 			{ status: 500 },
 		);
 	}
