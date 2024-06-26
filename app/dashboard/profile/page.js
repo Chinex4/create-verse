@@ -64,7 +64,7 @@ export default function Page() {
 				</div>
 			</section>
 
-            <section className='flex justify-between items-center gap-20 mt-6'>
+            <section className='flex flex-col md:flex-row md:justify-between md:items-center gap-8 md:gap-20 mt-6'>
                 <div className='space-y-2'>
                     <h2 className='font-semibold text-lg lg:text-xl'>
                         Balance:
