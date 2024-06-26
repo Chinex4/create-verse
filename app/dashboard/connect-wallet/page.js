@@ -34,6 +34,7 @@ export default function Page() {
 		setIsSubmitting(true);
 
 		const token = localStorage.getItem('token');
+		// console.log(token)
 
 		try {
 			const response = await fetch('/api/connect', {
@@ -62,7 +63,7 @@ export default function Page() {
 	};
 	return (
 		<>
-			<section className='my-[8rem] md:my-[15rem] px-6 lg:px-[4rem] mt-[7.5rem] space-y-2 w-full md:w-[40rem] lg:w-[50rem] mx-auto'>
+			<section className='my-[8rem] md:mb-[15rem] px-6 lg:px-[4rem] mt-[7.5rem] space-y-2 w-full md:w-[40rem] lg:w-[50rem] mx-auto'>
 				<h1 className='text-3xl md:text-4xl lg:text-5xl font-bold text-primary'>
 					Connect Wallet
 				</h1>

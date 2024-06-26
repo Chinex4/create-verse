@@ -21,6 +21,8 @@ export async function GET(request) {
 				username: true,
 				firstName: true,
 				lastName: true,
+				walletAddress: true,
+				email: true,
 			},
 		});
 
