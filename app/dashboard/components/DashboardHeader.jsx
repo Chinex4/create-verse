@@ -30,9 +30,9 @@ const DashboardHeader = ({ dp, user }) => {
                         </Link>
                     )}
                     {user.walletAddress && (
-                        <div className='flex space-x-2 items-center'>
-                            <h2 className='font-semibold'>Balance:</h2>
-                            <p className='font-light'>0.0000ETH</p>
+                        <div className='flex space-x-2 items-center text-sm'>
+                            <h2 className='font-semibold'>Bal:</h2>
+                            <p className='font-light text-xs'>0.000ETH</p>
                         </div>
                     )}
                     <p className='text-sm font-bold'>{user.username}</p>

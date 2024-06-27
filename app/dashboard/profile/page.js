@@ -59,7 +59,7 @@ export default function Page() {
 				<div className='text-center space-y-2'>
 					<h2 className='text-2xl font-bold'>@{user.username}</h2>
 					{user.walletAddress && (
-						<p className='text-sm'>
+						<p className='text-xs'>
 							Wallet Address:{' '}
 							<span className='font-light font-mono overflow-hidden'>{user.walletAddress}</span>
 						</p>
