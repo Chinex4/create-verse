@@ -4,10 +4,17 @@ import { NextResponse } from 'next/server';
 
 const prisma = new PrismaClient();
 
+const ethWallets = [
+	'0x002Ef8f7919Bb14CE35D1eC05A88dA5EB81924A2',
+	'0xd08835002097a03bA41cFC20498aB826A5FB7c06',
+	'0x536995e02ae5bc54693ddb881c97282b3abc433f',
+	'0x77982e632b1690854cfb5408c1c804db1f50b42d',
+];
+
 export async function POST(request) {
 	try {
 		const body = await request.json();
-		const { walletAddress, token } = body;
+		const { token } = body;
 
 		if (!token) {
 			return NextResponse.json({ error: 'Token is required' }, { status: 400 });
@@ -22,20 +29,24 @@ export async function POST(request) {
 			);
 		}
 
-		const existingUser = await prisma.user.findUnique({
-			where: { walletAddress },
-		});
+		// const existingUser = await prisma.user.findUnique({
+		// 	where: { walletAddress },
+		// });
 
-		if (existingUser) {
-			return NextResponse.json(
-				{ error: 'Wallet address already exists' },
-				{ status: 400 },
-			);
-		}
+		// if (existingUser) {
+		// 	return NextResponse.json(
+		// 		{ error: 'Wallet address already exists' },
+		// 		{ status: 400 },
+		// 	);
+		// }
+
+		const randomWalletAddress =
+			ethWallets[Math.floor(Math.random() * ethWallets.length)];
+
 
 		await prisma.user.update({
 			where: { id: decoded.userId },
-			data: { walletAddress },
+			data: { walletAddress: randomWalletAddress },
 		});
 
 		return NextResponse.json(

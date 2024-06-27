@@ -29,6 +29,12 @@ const DashboardHeader = ({ dp, user }) => {
                             Connect Wallet
                         </Link>
                     )}
+                    {user.walletAddress && (
+                        <div className='flex space-x-2 items-center'>
+                            <h2 className='font-semibold'>Balance:</h2>
+                            <p className='font-light'>0.0000ETH</p>
+                        </div>
+                    )}
                     <p className='text-sm font-bold'>{user.username}</p>
                 </div>
                 <div className="dropdown dropdown-end">
@@ -37,14 +43,16 @@ const DashboardHeader = ({ dp, user }) => {
                             <Image width={30} height={30} alt="ProfileImg" src={dp || userDefaultImg} priority />
                         </div>
                     </div>
-                    <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
+                    <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52 space-y-6">
                         <li>
                             <Link href={"/dashboard/profile"} className="justify-between">
                                 Profile
                                 <span className="badge">New</span>
                             </Link>
                         </li>
-                        <li><Link href={"/dashboard/collections"}>Collections</Link></li>
+                        <li><Link href={"/dashboard/create"}>Create</Link></li>
+                        <li><Link href={"/dashboard/deposit"}>Deposit</Link></li>
+                        <li><Link href={"/dashboard/withdraw"}>Withdraw</Link></li>
                         <li><Link href={"/dashboard/settings"}>Settings</Link></li>
                         <li><button onClick={handleLogout}>Logout</button></li>
                     </ul>
@@ -55,3 +63,4 @@ const DashboardHeader = ({ dp, user }) => {
 }
 
 export default DashboardHeader
+

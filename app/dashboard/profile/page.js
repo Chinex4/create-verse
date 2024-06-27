@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { toast } from 'react-toastify';
 import Image from 'next/image';
-import userImg from '@/public/user.png'
+import userImg from '@/public/user.png';
 
 export default function Page() {
 	const [user, setUser] = useState(null);
@@ -57,45 +57,26 @@ export default function Page() {
 					/>
 				</div>
 				<div className='text-center space-y-2'>
-					<h2 className='text-2xl font-bold'>
-						{user.firstName} {user.lastName}
-					</h2>
-					<p>@{user.username}</p>
-					<p>
-						Wallet Address: 
-						<span className='font-light font-mono'>
-							{user.walletAddress ? user.walletAddress : 'NIL. Please connect your wallet'}
-						</span>
-					</p>
+					<h2 className='text-2xl font-bold'>@{user.username}</h2>
+					{user.walletAddress && (
+						<p className='text-sm'>
+							Wallet Address:{' '}
+							<span className='font-light font-mono overflow-hidden'>{user.walletAddress}</span>
+						</p>
+					)}
 				</div>
 			</section>
 
-            <section className='flex flex-col md:flex-row md:justify-between md:items-center gap-8 md:gap-20 mt-6'>
-                <div className='space-y-2'>
-                    <h2 className='font-semibold text-lg lg:text-xl'>
-                        Balance:
-                    </h2>
-                    <p className='font-light'>
-                        0.0000ETH
-                    </p>
-                </div>
-                <div className='space-y-2'>
-                    <h2 className='font-semibold text-lg lg:text-xl'>
-                        Balance:
-                    </h2>
-                    <p className='font-light'>
-                        0.0000ETH
-                    </p>
-                </div>
-                <div className='space-y-2'>
-                    <h2 className='font-semibold text-lg lg:text-xl'>
-                        Balance:
-                    </h2>
-                    <p className='font-light'>
-                        0.0000ETH
-                    </p>
-                </div>
-            </section>
+			<section className='flex justify-center my-10'>
+				<div className='space-y-2'>
+					<h2 className='font-semibold text-lg lg:text-xl'>Balance:</h2>
+					<p className='font-light'>0.0000ETH</p>
+				</div>
+			</section>
+
+			<section className='mb-10'>
+				<h1 className='text-3xl font-bold'>Your NFTs</h1>
+			</section>
 		</div>
 	);
 }

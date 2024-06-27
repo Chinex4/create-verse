@@ -1,40 +1,28 @@
 'use client';
 import React, { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/navigation';
 
-const ethAddressRegex = /^0x[a-fA-F0-9]{40}$/;
+// const ethAddressRegex = /^0x[a-fA-F0-9]{40}$/;
 
-const schema = yup.object().shape({
-	walletAddress: yup
-		.string()
-		.matches(ethAddressRegex, 'Invalid ETH wallet address')
-		.required('Please provide your ETH Wallet Address'),
-});
+// const schema = yup.object().shape({
+// 	walletAddress: yup
+// 		.string()
+// 		.matches(ethAddressRegex, 'Invalid ETH wallet address')
+// 		.required('Please provide your ETH Wallet Address'),
+// });
 
 export default function Page() {
 	const [errorMessage, setErrorMessage] = useState('');
 	const [successMessage, setsuccessMessage] = useState('');
 	const [isSubmitting, setIsSubmitting] = useState(false);
-	const {
-		register,
-		handleSubmit,
-		formState: { errors },
-		reset,
-	} = useForm({
-		resolver: yupResolver(schema),
-	});
 
 	const router = useRouter();
 
-	const onSubmit = async (data) => {
+	const onSubmit = async () => {
 		setIsSubmitting(true);
 
 		const token = localStorage.getItem('token');
-		// console.log(token)
 
 		try {
 			const response = await fetch('/api/connect', {
@@ -42,13 +30,12 @@ export default function Page() {
 				headers: {
 					'Content-Type': 'application/json',
 				},
-				body: JSON.stringify({ walletAddress: data.walletAddress, token }),
+				body: JSON.stringify({ token }),
 			});
 			const result = await response.json();
 			if (response.ok) {
 				toast.success('Wallet connected successfully!');
 				setsuccessMessage('Wallet connected successfully!');
-				reset();
 				router.push('/dashboard');
 				router.refresh();
 			} else {
@@ -78,47 +65,25 @@ export default function Page() {
 						{successMessage}
 					</div>
 				)}
-
-				<form
-					method='POST'
-					className='mt-16'
-					onSubmit={handleSubmit(onSubmit)}>
-					<div className='mb-4'>
-						<label
-							className='block text-sm font-bold mb-2'
-							htmlFor='username'>
-							Enter your ETH Wallet Address
-						</label>
-						<input
-							name='walletAddress'
-							type='text'
-							{...register('walletAddress')}
-							className='input input-bordered w-full'
-						/>
-						{errors.walletAddress && (
-							<p className='text-red-500 text-xs mt-2'>
-								{errors.walletAddress.message}
-							</p>
-						)}
-					</div>
-					<div className='mb-4'>
-						<button
-							type='submit'
-							disabled={isSubmitting}
-							className={`btn bg-primary hover:bg-primary/70 text-white w-full md:w-[200px] ${
-								isSubmitting ? 'opacity-75 cursor-not-allowed' : ''
-							}`}>
-							{isSubmitting && (
-								<span className='loading loading-dots loading-md'></span>
-							)}
-							{isSubmitting ? 'Connecting...' : 'Connect'}
-						</button>
-					</div>
-				</form>
-				<p className='mt-[8rem] text-info'>
-					Please Provide a valid ETH wallet as this where your funds will be
-					sent
+				<p className='mt-[8rem] text-info font-mono'>
+					Please note, an ETH wallet address will be assigned to you.
 				</p>
+				<div className='mt-16 mb-4'>
+					<button
+						type='submit'
+						disabled={isSubmitting}
+						onClick={onSubmit}
+						className={`btn bg-primary hover:bg-primary/70 text-white w-full ${
+							isSubmitting ? 'opacity-75 cursor-not-allowed' : ''
+						}`}>
+						{isSubmitting && (
+							<span className='loading loading-dots loading-md'></span>
+						)}
+						{isSubmitting
+							? 'Generating Wallet...'
+							: 'Generate ETH Wallet Address'}
+					</button>
+				</div>
 			</section>
 		</>
 	);
