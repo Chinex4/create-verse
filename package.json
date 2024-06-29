@@ -27,6 +27,7 @@
 		"react-dom": "^18",
 		"react-hook-form": "^7.52.0",
 		"react-toastify": "^10.0.5",
+		"uuid": "^10.0.0",
 		"web3modal": "^1.9.12",
 		"yup": "^1.4.0"
 	},

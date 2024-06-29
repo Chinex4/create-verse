@@ -17,7 +17,7 @@ export async function GET(request) {
 	try {
 		const decoded = verify(token, process.env.JWT_SECRET);
 		const userId = decoded.userId;
-		const nfts = await prisma.nft.findMany({
+		const nfts = await prisma.nFT.findMany({
 			where: {
 				ownerId: userId,
 			},

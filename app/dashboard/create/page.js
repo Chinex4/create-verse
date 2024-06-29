@@ -27,8 +27,8 @@ const schema = yup.object().shape({
 export default function Page() {
 	const [errorMessage, setErrorMessage] = useState('');
 	const [isSubmitting, setIsSubmitting] = useState(false);
-	const [successMessage, setsuccessMessage] = useState('');
-	const [filePreview, setfilePreview] = useState(null);
+	const [successMessage, setSuccessMessage] = useState('');
+	const [filePreview, setFilePreview] = useState(null);
 
 	const {
 		register,
@@ -45,26 +45,26 @@ export default function Page() {
 	const onSubmit = async (data) => {
 		setIsSubmitting(true);
 		const token = localStorage.getItem('token');
+		console.log(data)
 
-        console.log(data)
-
-		// const formData = new FormData();
-		// formData.append('file', data.file[0]);
-		// formData.append('price', data.price);
-		// formData.append('name', data.name);
-		// formData.append('description', data.description);
-		// formData.append('royalties', data.royalties);
-		// formData.append('token', token);
+		const formData = new FormData();
+		formData.append('file', data.file);
+		formData.append('price', data.price);
+		formData.append('name', data.name);
+		formData.append('description', data.description);
+		formData.append('royalties', data.royalties);
+		formData.append('token', token);
 
 		try {
 			const response = await fetch('/api/create', {
 				method: 'POST',
-				body: JSON.stringify(data),
+				body: formData,
 			});
+
 			const result = await response.json();
 			if (response.ok) {
 				toast.success('NFT created successfully!');
-				setsuccessMessage('NFT created successfully!');
+				setSuccessMessage('NFT created successfully!');
 				reset();
 				router.push('/dashboard/profile');
 				router.refresh();
@@ -80,13 +80,10 @@ export default function Page() {
 		}
 	};
 
-
-
 	const handleChange = (e) => {
 		const file = e.target.files[0];
 		setValue('file', file);
-		setfilePreview(URL.createObjectURL(file));
-        console.log(file, URL.createObjectURL(file))
+		setFilePreview(URL.createObjectURL(file));
 	};
 
 	return (
@@ -104,12 +101,11 @@ export default function Page() {
 					{successMessage}
 				</div>
 			)}
-
 			<form
 				method='POST'
 				className='mt-8'
 				onSubmit={handleSubmit(onSubmit)}>
-				{/* FIle */}
+				{/* File */}
 				<div className='mb-4'>
 					<label
 						className='block text-sm font-bold mb-2'
@@ -120,7 +116,7 @@ export default function Page() {
 						id='file'
 						name='file'
 						type='file'
-						{...register('file')}
+						// {...register('file')}
 						onChange={handleChange}
 						className='file-input file-input-bordered w-full'
 					/>
@@ -187,7 +183,7 @@ export default function Page() {
 						name='price'
 						type='number'
 						step={0.01}
-                        defaultValue={0.00}
+						defaultValue={0.0}
 						placeholder='Enter price'
 						{...register('price')}
 						className='input input-bordered w-full'
@@ -207,8 +203,8 @@ export default function Page() {
 						id='royalties'
 						name='royalties'
 						type='number'
-                        defaultValue={10}
-                        step={5}
+						defaultValue={10}
+						step={5}
 						{...register('royalties')}
 						className='input input-bordered w-full'
 					/>

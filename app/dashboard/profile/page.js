@@ -9,6 +9,7 @@ import userImg from '@/public/user.png';
 export default function Page() {
 	const [user, setUser] = useState(null);
 	const [nfts, setNfts] = useState([]);
+	const [loadingNfts, setloadingNfts] = useState(false);
 	const router = useRouter();
 
 	useEffect(() => {
@@ -36,22 +37,29 @@ export default function Page() {
 					router.push('/register/login');
 				});
 
-			fetch('/api/user/nfts', {
-				headers: {
-					Authorization: `Bearer ${token}`,
-				}
-			})
-				.then(res => res.json())
-				.then(data => {
-					if (data.error) {
-						toast.error(`${data.error}: ${data.details}`)
-					} else {
-						setNfts(data)
-					}
+			try {
+				setloadingNfts(true)
+				fetch('/api/user/nfts', {
+					headers: {
+						Authorization: `Bearer ${token}`,
+					},
 				})
-				.catch(err => {
-					toast.error(`Failed to fetch NFTs: ${err.message}`)
-				})
+					.then((res) => res.json())
+					.then((data) => {
+						if (data.error) {
+							toast.error(`${data.error}: ${data.details}`);
+						} else {
+							setNfts(data);
+						}
+					})
+					.catch((err) => {
+						toast.error(`Failed to fetch NFTs: ${err.message}`);
+					});
+			} catch (error) {
+				toast.error(`Failed to fetch NFTs: ${error.message}`)
+			} finally{
+				setloadingNfts(false)
+			}
 		}
 	}, [router]);
 
@@ -79,7 +87,9 @@ export default function Page() {
 					{user.walletAddress && (
 						<p className='text-xs'>
 							Wallet Address:{' '}
-							<span className='font-light font-mono overflow-hidden'>{user.walletAddress}</span>
+							<span className='font-light font-mono overflow-hidden'>
+								{user.walletAddress}
+							</span>
 						</p>
 					)}
 				</div>
@@ -94,27 +104,38 @@ export default function Page() {
 
 			<section className='mb-10'>
 				<h1 className='text-3xl font-bold'>Your NFTs</h1>
+				{loadingNfts && (
+					<div className='flex w-52 flex-col gap-4'>
+						<div className='skeleton h-48 w-full'></div>
+						<div className='skeleton h-4 w-28'></div>
+						<div className='skeleton h-4 w-full'></div>
+						<div className='skeleton h-4 w-full'></div>
+					</div>
+				)}
 				<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4'>
 					{nfts.length > 0 ? (
 						nfts.map((nft) => (
-							<div key={nft.id} className='border p-4 rounded-lg'>
-								<Image 
-									src={nft.fileUrl}
+							<div
+								key={nft.id}
+								className='border p-4 rounded-lg'>
+								<Image
+									src={`${nft.fileUrl}`}
 									alt={nft.name}
 									className='w-full h-48 object-cover rounded-md mb-4'
 									priority
-									width={'100'}
-									height={48}
+									fill
 								/>
-								<h2 className='text-lg font-semibold'>
-									{nft.name}
-								</h2>
+								<h2 className='text-lg font-semibold'>{nft.name}</h2>
 								{nft.description && (
 									<p className='text-sm text-gray-500'>{nft.description}</p>
 								)}
 								<div className='flex justify-between mt-2'>
-									<span className='text-sm font-medium'>Price: {nft.price} ETH</span>
-									<span className='text-sm font-medium'>Royalties: {nft.royalties}&</span>
+									<span className='text-sm font-medium'>
+										Price: {nft.price} ETH
+									</span>
+									<span className='text-sm font-medium'>
+										Royalties: {nft.royalties}%
+									</span>
 								</div>
 							</div>
 						))
