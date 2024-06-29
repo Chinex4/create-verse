@@ -123,7 +123,7 @@ export default function Page() {
 									alt={nft.name}
 									className='w-full h-48 object-cover rounded-md mb-4'
 									priority
-									width={'100'}
+									width={'99'}
 									height={48}
 								/>
 								<h2 className='text-lg font-semibold'>{nft.name}</h2>
