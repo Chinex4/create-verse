@@ -46,22 +46,20 @@ export default function Page() {
 		setIsSubmitting(true);
 		const token = localStorage.getItem('token');
 
-		const formData = new FormData();
-		formData.append('file', data.file[0]);
-		formData.append('price', data.price);
-		formData.append('name', data.name);
-		formData.append('description', data.description);
-		formData.append('royalties', data.royalties);
-		formData.append('token', token);
+        console.log(data)
 
-		for (let pair of formData.entries()) {
-			console.log(pair[0] + ': ' + pair[1]); // Logging form data for debug
-		}
+		// const formData = new FormData();
+		// formData.append('file', data.file[0]);
+		// formData.append('price', data.price);
+		// formData.append('name', data.name);
+		// formData.append('description', data.description);
+		// formData.append('royalties', data.royalties);
+		// formData.append('token', token);
 
 		try {
 			const response = await fetch('/api/create', {
 				method: 'POST',
-				body: formData,
+				body: JSON.stringify(data),
 			});
 			const result = await response.json();
 			if (response.ok) {
@@ -88,6 +86,7 @@ export default function Page() {
 		const file = e.target.files[0];
 		setValue('file', file);
 		setfilePreview(URL.createObjectURL(file));
+        console.log(file, URL.createObjectURL(file))
 	};
 
 	return (
