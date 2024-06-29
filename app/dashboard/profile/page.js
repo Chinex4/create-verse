@@ -8,6 +8,7 @@ import userImg from '@/public/user.png';
 
 export default function Page() {
 	const [user, setUser] = useState(null);
+	const [nfts, setNfts] = useState([]);
 	const router = useRouter();
 
 	useEffect(() => {
@@ -34,13 +35,30 @@ export default function Page() {
 					toast.error('Failed to fetch user data');
 					router.push('/register/login');
 				});
+
+			fetch('/api/user/nfts', {
+				headers: {
+					Authorization: `Bearer ${token}`,
+				}
+			})
+				.then(res => res.json())
+				.then(data => {
+					if (data.error) {
+						toast.error(`${data.error}: ${data.details}`)
+					} else {
+						setNfts(data)
+					}
+				})
+				.catch(err => {
+					toast.error(`Failed to fetch NFTs: ${err.message}`)
+				})
 		}
 	}, [router]);
 
 	if (!user) {
 		return (
 			<div className='w-full min-h-screen grid place-items-center'>
-				<span className='loading loading-dots loading-lg'></span>
+				<span className='loading loading-dots text-secondary w-[4rem]'></span>
 			</div>
 		);
 	}
@@ -76,6 +94,34 @@ export default function Page() {
 
 			<section className='mb-10'>
 				<h1 className='text-3xl font-bold'>Your NFTs</h1>
+				<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4'>
+					{nfts.length > 0 ? (
+						nfts.map((nft) => (
+							<div key={nft.id} className='border p-4 rounded-lg'>
+								<Image 
+									src={nft.fileUrl}
+									alt={nft.name}
+									className='w-full h-48 object-cover rounded-md mb-4'
+									priority
+									width={'100'}
+									height={48}
+								/>
+								<h2 className='text-lg font-semibold'>
+									{nft.name}
+								</h2>
+								{nft.description && (
+									<p className='text-sm text-gray-500'>{nft.description}</p>
+								)}
+								<div className='flex justify-between mt-2'>
+									<span className='text-sm font-medium'>Price: {nft.price} ETH</span>
+									<span className='text-sm font-medium'>Royalties: {nft.royalties}&</span>
+								</div>
+							</div>
+						))
+					) : (
+						<p className='text-gray-600'>No NFTs found</p>
+					)}
+				</div>
 			</section>
 		</div>
 	);

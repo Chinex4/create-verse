@@ -16,4 +16,17 @@ model User {
   password            String
   walletAddress       String?   
   createdAt           DateTime  @default(now())
+  nfts                NFT[]
+}
+
+model NFT {
+  id                  Int       @id @default(autoincrement())
+  fileUrl             String  
+  price               Float
+  name                String 
+  description         String?
+  royalties           Float
+  createdAt           DateTime  @default(now())
+  ownerId             Int
+  owner               User      @relation(fields: [ownerId], references: [id])
 }

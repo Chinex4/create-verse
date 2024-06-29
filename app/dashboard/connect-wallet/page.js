@@ -65,8 +65,8 @@ export default function Page() {
 						{successMessage}
 					</div>
 				)}
-				<p className='mt-[8rem] text-info font-mono'>
-					Please note, an ETH wallet address will be assigned to you.
+				<p className='mt-[8rem] text-info'>
+					Please note, an Ethereum wallet address will be assigned to you.
 				</p>
 				<div className='mt-16 mb-4'>
 					<button
