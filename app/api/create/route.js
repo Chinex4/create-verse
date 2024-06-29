@@ -26,11 +26,6 @@ const upload = multer({
 	},
 }).single('file');
 
-export const config = {
-	api: {
-		bodyParser: false,
-	},
-};
 
 export async function POST(request) {
 	if (request.method !== 'POST') {
