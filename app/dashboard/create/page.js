@@ -48,6 +48,8 @@ export default function Page() {
 		console.log(data)
 
 		const formData = new FormData();
+		console.log(data.file);
+		console.log(data.file[0]);
 		formData.append('file', data.file);
 		formData.append('price', data.price);
 		formData.append('name', data.name);
