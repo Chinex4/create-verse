@@ -36,6 +36,29 @@ export async function POST(request) {
 			);
 		}
 
+		const fileType = file.type;
+		const validImageTypes = [
+			'image/jpeg',
+			'image/png',
+			'image/gif',
+			'image/webp',
+		];
+
+		if (!validImageTypes.includes(fileType)) {
+			return NextResponse.json(
+				{ error: 'Invalid file type. Only image files are allowed.' },
+				{ status: 400 },
+			);
+		}
+
+		const maxFileSize = 10 * 1024 * 1024; // 10MB in bytes
+		if (file.size > maxFileSize) {
+			return NextResponse.json(
+				{ error: 'File size exceeds the 10MB limit.' },
+				{ status: 400 },
+			);
+		}
+
 		const buffer = Buffer.from(await file.arrayBuffer());
 		const uniqueFileName = `${uuidv4()}-${file.name}`;
 
@@ -95,7 +118,6 @@ export async function POST(request) {
 			{ status: 200 },
 		);
 	} catch (error) {
-		console.log(error)
 		return NextResponse.json(
 			{ error: `Error creating NFT: ${error.message}` },
 			{ status: 500 },
