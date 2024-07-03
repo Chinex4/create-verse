@@ -7,7 +7,7 @@ import userDefaultImg from '@/public/user.png';
 import Image from 'next/image'
 import { useRouter } from 'next/navigation';
 
-const DashboardHeader = ({ dp, user }) => {
+const DashboardHeader = ({ user }) => {
     const router = useRouter();
 
     const handleLogout = () => {
@@ -40,10 +40,10 @@ const DashboardHeader = ({ dp, user }) => {
                 <div className="dropdown dropdown-end">
                     <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                         <div className="w-10 rounded-full">
-                            <Image width={30} height={30} alt="ProfileImg" src={dp || userDefaultImg} priority />
+                            <Image width={30} height={30} alt="ProfileImg" src={user.profilePicture || userDefaultImg} priority />
                         </div>
                     </div>
-                    <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52 space-y-6">
+                    <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52 space-y-5 py-3">
                         <li>
                             <Link href={"/dashboard/profile"} className="justify-between">
                                 Profile
@@ -53,7 +53,7 @@ const DashboardHeader = ({ dp, user }) => {
                         <li><Link href={"/dashboard/create"}>Create</Link></li>
                         <li><Link href={"/dashboard/deposit"}>Deposit</Link></li>
                         <li><Link href={"/dashboard/withdraw"}>Withdraw</Link></li>
-                        <li><Link href={"/dashboard/settings"}>Settings</Link></li>
+                        <li><Link href={"/dashboard/updateprofile"}>Update Profile</Link></li>
                         <li><button onClick={handleLogout}>Logout</button></li>
                     </ul>
                 </div>

@@ -1,4 +1,5 @@
 import { PrismaClient } from '@prisma/client';
+import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { NextResponse } from 'next/server';
 import { v4 as uuidv4 } from 'uuid';
@@ -17,17 +18,14 @@ cloudinary.v2.config({
 export const dynamic = 'force-dynamic';
 
 export async function POST(request) {
+	if (request.method !== 'POST') {
+		return NextResponse.json({ error: 'Method not allowed' }, { status: 405 });
+	}
+
 	try {
-		// Parse multipart form data
 		const data = await request.formData();
 		const file = data.get('file');
-		const price = data.get('price');
-		const name = data.get('name');
-		const description = data.get('description');
-		const royalties = data.get('royalties');
 		const token = data.get('token');
-
-		console.log(file);
 
 		if (!file || !file.name) {
 			return NextResponse.json(
@@ -96,29 +94,25 @@ export async function POST(request) {
 
 		if (!decoded) {
 			return NextResponse.json(
-				{ error: 'Invalid or expired token' },
+				{ message: 'Invalid or expired token' },
 				{ status: 400 },
 			);
 		}
 
-		const nft = await prisma.nFT.create({
+		await prisma.user.update({
+			where: { id: userId },
 			data: {
-				fileUrl: result.secure_url,
-				price: parseFloat(price),
-				name,
-				description,
-				royalties: parseFloat(royalties),
-				ownerId: userId,
+				profilePicture: result.secure_url,
 			},
 		});
 
 		return NextResponse.json(
-			{ message: 'NFT created successfully', nft },
+			{ message: 'Profile Update successful' },
 			{ status: 200 },
 		);
 	} catch (error) {
 		return NextResponse.json(
-			{ error: `Error creating NFT: ${error.message}` },
+			{ error: `Error updating Profile: ${error.message}` },
 			{ status: 500 },
 		);
 	}

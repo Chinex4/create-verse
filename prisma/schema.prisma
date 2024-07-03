@@ -14,6 +14,7 @@ model User {
   lastName            String
   email               String    @unique
   password            String
+  profilePicture      String?
   walletAddress       String?   
   createdAt           DateTime  @default(now())
   nfts                NFT[]

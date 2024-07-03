@@ -21,7 +21,7 @@ export default function Page({ params }) {
 	}
 
 	return (
-		<div>
+		<div className='my-8'>
 			<NFTPage isLoggedin={true} nft={nft} />
 		</div>
 	);

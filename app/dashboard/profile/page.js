@@ -77,9 +77,10 @@ export default function Page() {
 					<Image
 						width={200}
 						height={200}
-						src={userImg}
+						src={user.profilePicture || userImg}
 						alt='profilepic'
 						priority
+						className='rounded-full'
 					/>
 				</div>
 				<div className='text-center space-y-2'>
