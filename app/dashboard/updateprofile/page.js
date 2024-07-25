@@ -11,6 +11,7 @@ import Image from 'next/image';
 
 const schema = yup.object().shape({
 	file: yup.mixed().required('Choose an Image to upload'),
+	amount: yup.number().required("Please specify an amount")
 	// confirmNewPassword: yup
 	// 	.string()
 	// 	.oneOf([yup.ref('password')], 'Passwords must match'),
