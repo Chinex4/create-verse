@@ -5,7 +5,7 @@ import NFTCarousel from './components/NFTCAROUSEL';
 import Link from 'next/link';
 import StepsContainer from './components/StepsContainer';
 import Footer from './components/Footer';
-import { motion } from 'framer-motion';
+// import { motion } from 'framer-motion';
 
 export default function Home() {
 	return (
@@ -14,16 +14,17 @@ export default function Home() {
 
 			<section className='my-8 px-6 lg:px-[4rem] mt-[7.5rem]'>
 				<div className='flex flex-col space-y-6 lg:flex-row-reverse lg:space-y-0 lg:items-center lg:justify-between'>
-					<motion.div
-						initial={{ y: 100, opacity: 0 }}
-						animate={{ y: 0, opacity: 1 }}
-						transition={{ type: 'spring', stiffness: 120, duration: 0.8 }}>
+					<div
+						// initial={{ y: 100, opacity: 0 }}
+						// animate={{ y: 0, opacity: 1 }}
+						// transition={{ type: 'spring', stiffness: 120, duration: 0.8 }}
+						>
 						<HomeCrousel />
-					</motion.div>
-					<motion.div
-						initial={{ x: -200, opacity: 0 }}
-						animate={{ x: 0, opacity: 1 }}
-						transition={{ type: 'tween', duration: 1, delay: 0.3 }}
+					</div>
+					<div
+						// initial={{ x: -200, opacity: 0 }}
+						// animate={{ x: 0, opacity: 1 }}
+						// transition={{ type: 'tween', duration: 1, delay: 0.3 }}
 						className='lg:basis-[40%] text-center lg:text-left space-y-4'>
 						<h1 className='text-3xl font-bold lg:text-5xl text-primary'>
 							Step into a world of digital creativity and innovation with
@@ -38,7 +39,7 @@ export default function Home() {
 							href={'/register/signup'}>
 							Get Started
 						</Link>
-					</motion.div>
+					</div>
 				</div>
 			</section>
 

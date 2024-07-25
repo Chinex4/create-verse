@@ -53,7 +53,7 @@ export default function DepositPage() {
 			const result = await response.json();
 			if (response.ok) {
 				toast.error('An error occurred please contact ');
-				setSuccessMessage('An error occurred please contact ');
+				setErrorMessage('An error occurred please contact ');
 				reset();
 				router.push('/dashboard/profile');
 				router.refresh();

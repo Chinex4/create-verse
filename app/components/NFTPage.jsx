@@ -66,7 +66,7 @@ export default function NFTPage({ nft, isLoggedin }) {
                 <h1 className="text-[2rem] lg:text-[3rem] font-bold">{nft.creator}</h1>
                 <p className="flex items-center space-x-2 text-xl font-semibold">
                     <span>{nft.price}ETH</span>
-                    <Image src={ethcoin} width={30} height={30} />
+                    <Image src={ethcoin} alt={"ethcoin"} width={30} height={30} />
                 </p>
                 <p>{nft.description}</p>
                 <button
