@@ -6,10 +6,47 @@ import ethcoin from "@/public/coins.png";
 
 export default function NFTPage({ nft, isLoggedin }) {
     const router = useRouter();
+    const [user, setUser] = useState(null);
+
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+
+        if (!token) {
+            router.push('/register/login');
+        } else {
+            fetch('/api/user', {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    if (data.error) {
+                        toast.error(data.error);
+                        router.push('/register/login');
+                    } else {
+                        setUser(data);
+                    }
+                })
+                .catch(() => {
+                    toast.error('Failed to fetch user data');
+                    router.push('/register/login');
+                });
+        }
+    }, [router]);
+
+
+    if (!user) {
+        return (
+            <div className='grid w-full min-h-screen place-items-center'>
+                <span className='loading loading-dots loading-lg'></span>
+            </div>
+        );
+    }
 
     const handleClick = () => {
         if (isLoggedin) {
-            router.push('/dashboard/connect-wallet')
+            user.walletAddress ? router.push('/dashboard/connect-wallet') : router.push('/dashboard/deposit')
         }
         else{
             router.push("/register/login")
@@ -17,7 +54,7 @@ export default function NFTPage({ nft, isLoggedin }) {
     }
 
     return (
-        <div className="mt-32 px-6 lg:px-[4rem] flex flex-col md:flex-row justify-between">
+        <div className="my-32 px-6 lg:px-[4rem] flex flex-col md:flex-row justify-between">
             <Image
                 src={nft.image}
                 alt={nft.creator || "nftcreator"}
@@ -27,14 +64,14 @@ export default function NFTPage({ nft, isLoggedin }) {
             />
             <div className="md:basis-[50%] lg:basis[60%]">
                 <h1 className="text-[2rem] lg:text-[3rem] font-bold">{nft.creator}</h1>
-                <p className="text-xl font-semibold flex items-center space-x-2">
+                <p className="flex items-center space-x-2 text-xl font-semibold">
                     <span>{nft.price}ETH</span>
                     <Image src={ethcoin} width={30} height={30} />
                 </p>
                 <p>{nft.description}</p>
                 <button
                     onClick={handleClick}
-                    className="mt-4 bg-primary text-white font-bold py-2 px-4 rounded-lg hover:bg-primary-focus"
+                    className="px-4 py-2 mt-4 font-bold text-white rounded-lg bg-primary hover:bg-primary-focus"
                 >
                     Buy NFT
                 </button>

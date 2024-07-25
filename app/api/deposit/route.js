@@ -1,10 +1,8 @@
 import { PrismaClient } from '@prisma/client';
-import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { NextResponse } from 'next/server';
 import { v4 as uuidv4 } from 'uuid';
 import cloudinary from 'cloudinary';
-import path from 'path';
 import streamifier from 'streamifier';
 
 const prisma = new PrismaClient();

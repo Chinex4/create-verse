@@ -15,14 +15,16 @@ export function generateMetadata({ params }) {
 
 export default function Page({ params }) {
 	const nft = getNFTData(params.nftslug);
-
 	if (!nft) {
 		notFound();
 	}
-
+	
 	return (
 		<div className='my-8'>
-			<NFTPage isLoggedin={true} nft={nft} />
+			<NFTPage
+				isLoggedin={true}
+				nft={nft}
+			/>
 		</div>
 	);
 }
