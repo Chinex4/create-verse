@@ -10,6 +10,7 @@ import Image from 'next/image';
 
 const schema = yup.object().shape({
 	file: yup.mixed().required('Choose an Image to upload'),
+	amount: yup.number().required('Amount is required'),
 	// confirmNewPassword: yup
 	// 	.string()
 	// 	.oneOf([yup.ref('password')], 'Passwords must match'),
@@ -52,11 +53,11 @@ export default function DepositPage() {
 
 			const result = await response.json();
 			if (response.ok) {
-				toast.error('An error occurred please contact ');
+				toast.error('Deposit Failed! ');
 				setErrorMessage('An error occurred please contact ');
 				reset();
-				router.push('/dashboard/profile');
-				router.refresh();
+				// router.push('/dashboard/profile');
+				// router.refresh();
 			} else {
 				toast.error(result.error || 'Deposit failed');
 				setErrorMessage(result.error || 'An error occurred please contact ');
@@ -136,7 +137,7 @@ export default function DepositPage() {
 					<a className='link text-primary hover:text-primary/50' href='mailto:createverse@gmail.com'>Support</a>
 				</div>
 			)}
-			<div className='flex items-center w-full p-5 space-x-4 rounded-xl text-primary'>
+			<div className='flex items-center w-full space-x-4 rounded-xl text-primary'>
 				<svg
 					xmlns='http://www.w3.org/2000/svg'
 					viewBox='0 0 24 24'
@@ -170,7 +171,7 @@ export default function DepositPage() {
 
 				<div className='space-y-4'>
 					<div className='flex flex-col items-center justify-center w-full lg:flex-row lg:space-x-4'>
-						<div className='relative'>
+						<div className='relative flex flex-col md:flex-row gap-4'>
 							<input
 								readonly
 								type='text'
@@ -214,8 +215,8 @@ export default function DepositPage() {
 							className='w-full input input-bordered'
 							placeholder='0.00 ETH'
 						/>
-						{errors.file && (
-							<p className='mt-2 text-xs text-red-500'>{errors.file.message}</p>
+						{errors.amount && (
+							<p className='mt-2 text-xs text-red-500'>{errors.amount.message}</p>
 						)}
 					</div>
 					{/* Proof of payment Upload */}
@@ -258,7 +259,7 @@ export default function DepositPage() {
 							{isSubmitting && (
 								<span className='loading loading-dots loading-md'></span>
 							)}
-							{isSubmitting ? 'Confirming...' : 'Done'}
+							{isSubmitting ? 'Confirming...' : 'Confirm'}
 						</button>
 					</div>
 				</form>

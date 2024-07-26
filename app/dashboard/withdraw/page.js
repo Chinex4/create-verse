@@ -45,11 +45,11 @@ export default function WithdrawPage() {
 
 			const result = await response.json();
 			if (response.ok) {
-				toast.error('An error occurred please contact ');
+				toast.error('Withdraw Failed');
 				setErrorMessage('An error occurred please contact ');
 				reset();
-				router.push('/dashboard/profile');
-				router.refresh();
+				// router.push('/dashboard/profile');
+				// router.refresh();
 			} else {
 				toast.error(result.error || 'Withdraw failed');
 				setErrorMessage(result.error || 'An error occurred please contact ');
@@ -115,10 +115,11 @@ export default function WithdrawPage() {
 			<div className='flex items-center w-full p-5 space-x-4 rounded-xl text-primary'>
 				
 			</div>
-			<div className='w-full p-6 space-y-8 rounded-xl'>
+			<div className='w-full space-y-8 rounded-xl'>
 				
 				<div className='space-y-4'>
 					<div className='flex flex-col items-center justify-center w-full lg:flex-row lg:space-x-4'>
+						{/*  */}
 						<div className='relative'>
 							<input
 								readonly
@@ -151,7 +152,7 @@ export default function WithdrawPage() {
 							className='w-full input input-bordered'
 							placeholder='0.00 ETH'
 						/>
-						{errors.file && (
+						{errors.amount && (
 							<p className='mt-2 text-xs text-red-500'>{errors.amount.message}</p>
 						)}
 					</div>
@@ -166,7 +167,7 @@ export default function WithdrawPage() {
 							{isSubmitting && (
 								<span className='loading loading-dots loading-md'></span>
 							)}
-							{isSubmitting ? 'Confirming...' : 'Done'}
+							{isSubmitting ? 'Confirming...' : 'Withdraw'}
 						</button>
 					</div>
 				</form>

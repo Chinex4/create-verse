@@ -3,6 +3,8 @@
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import ethcoin from "@/public/coins.png";
+import { toast } from 'react-toastify';
+import { useState, useEffect } from "react";
 
 export default function NFTPage({ nft, isLoggedin }) {
     const router = useRouter();
@@ -12,7 +14,7 @@ export default function NFTPage({ nft, isLoggedin }) {
         const token = localStorage.getItem('token');
 
         if (!token) {
-            router.push('/register/login');
+            // router.push('/register/login');
         } else {
             fetch('/api/user', {
                 headers: {
@@ -22,8 +24,8 @@ export default function NFTPage({ nft, isLoggedin }) {
                 .then((response) => response.json())
                 .then((data) => {
                     if (data.error) {
-                        toast.error(data.error);
-                        router.push('/register/login');
+                        // toast.error(data.error);
+                        // router.push('/register/login');
                     } else {
                         setUser(data);
                     }
@@ -36,13 +38,13 @@ export default function NFTPage({ nft, isLoggedin }) {
     }, [router]);
 
 
-    if (!user) {
-        return (
-            <div className='grid w-full min-h-screen place-items-center'>
-                <span className='loading loading-dots loading-lg'></span>
-            </div>
-        );
-    }
+    // if (!user) {
+    //     return (
+    //         <div className='grid w-full min-h-screen place-items-center'>
+    //             <span className='loading loading-dots loading-lg'></span>
+    //         </div>
+    //     );
+    // }
 
     const handleClick = () => {
         if (isLoggedin) {
@@ -54,7 +56,7 @@ export default function NFTPage({ nft, isLoggedin }) {
     }
 
     return (
-        <div className="my-32 px-6 lg:px-[4rem] flex flex-col md:flex-row justify-between">
+        <div className="my-32 px-6 lg:px-[4rem] flex flex-col md:flex-row justify-between lg:items-center">
             <Image
                 src={nft.image}
                 alt={nft.creator || "nftcreator"}
@@ -71,7 +73,7 @@ export default function NFTPage({ nft, isLoggedin }) {
                 <p>{nft.description}</p>
                 <button
                     onClick={handleClick}
-                    className="px-4 py-2 mt-4 font-bold text-white rounded-lg bg-primary hover:bg-primary-focus"
+                    className="px-4 py-2 mt-4 lg:mt-20 font-bold text-white rounded-lg bg-primary hover:bg-primary-focus"
                 >
                     Buy NFT
                 </button>

@@ -1,17 +1,17 @@
 import { PrismaClient } from '@prisma/client';
 import jwt from 'jsonwebtoken';
 import { NextResponse } from 'next/server';
-import { v4 as uuidv4 } from 'uuid';
-import cloudinary from 'cloudinary';
-import streamifier from 'streamifier';
+// import { v4 as uuidv4 } from 'uuid';
+// import cloudinary from 'cloudinary';
+// import streamifier from 'streamifier';
 
 const prisma = new PrismaClient();
 
-cloudinary.v2.config({
-	cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-	api_key: process.env.CLOUDINARY_API_KEY,
-	api_secret: process.env.CLOUDINARY_API_SECRET,
-});
+// cloudinary.v2.config({
+// 	cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+// 	api_key: process.env.CLOUDINARY_API_KEY,
+// 	api_secret: process.env.CLOUDINARY_API_SECRET,
+// });
 
 export const dynamic = 'force-dynamic';
 
@@ -98,15 +98,15 @@ export async function POST(request) {
 			);
 		}
 
-		await prisma.user.update({
-			where: { id: userId },
-			data: {
-				profilePicture: result.secure_url,
-			},
-		});
+		// await prisma.user.update({
+		// 	where: { id: userId },
+		// 	data: {
+		// 		profilePicture: result.secure_url,
+		// 	},
+		// });
 
 		return NextResponse.json(
-			{ message: 'An error occurred please contact ' },
+			{ message: 'Deposit failed please contact support' },
 			{ status: 200 },
 		);
 	} catch (error) {
