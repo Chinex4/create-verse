@@ -75,17 +75,15 @@ export default function Page() {
 		<div className='mb-[15rem] px-6 lg:px-[20rem] mt-[6rem]'>
 			<section className=' space-y-4'>
 				<div
-					className={`w-[200px] h-[200px] bg-[url(${
-						user.profilePicture || userImg
-					})] bg-center bg-cover bg-no-repeat rounded-full mx-auto`}>
-					{/* <Image
+					className={`w-[200px] rounded-full mx-auto`}>
+					<Image
 						width={200}
 						height={200}
 						src={user.profilePicture || userImg}
 						alt='profilepic'
 						priority
 						className='rounded-full'
-					/> */}
+					/>
 				</div>
 				<div className='text-center space-y-2'>
 					<h2 className='text-2xl font-bold'>@{user.username}</h2>
@@ -100,7 +98,7 @@ export default function Page() {
 				</div>
 			</section>
 
-			<section className='flex justify-center my-10'>
+			<section className='flex justify-center my-10 flex-col'>
 				<div className='space-y-2'>
 					<h2 className='font-semibold text-lg lg:text-xl'>Balance:</h2>
 					<p className='font-light'>0.0000ETH</p>

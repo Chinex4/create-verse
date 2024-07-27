@@ -145,7 +145,7 @@ export default function DepositPage() {
 					</a>
 				</div>
 			)}
-			<div className='mt-8 flex items-center w-full space-x-4 rounded-xl text-primary'>
+			<div className='mt-8 flex items-center w-full md:space-x-4 rounded-xl text-primary'>
 				<svg
 					xmlns='http://www.w3.org/2000/svg'
 					viewBox='0 0 24 24'
@@ -162,7 +162,7 @@ export default function DepositPage() {
 					CREATEVERSE won't be liable for any loss of funds. Thank you!
 				</p>
 			</div>
-			<div className='w-full space-y-8'>
+			<div className='mt-4 w-full space-y-8'>
 				<p className='text-lg font-bold text-gray-500'>
 					DEPOSIT AND SUBMIT PROOF TO TOP UP YOUR BALANCE
 				</p>
@@ -178,7 +178,7 @@ export default function DepositPage() {
 				</div> */}
 
 				<div className='space-y-4'>
-					<div className='flex flex-col items-center justify-center w-full lg:flex-row lg:space-x-4'>
+					<div className='flex flex-col items-center md:justify-center w-full lg:flex-row lg:space-x-4'>
 						<div className='relative flex flex-col md:flex-row gap-4'>
 							<input
 								readonly
@@ -188,7 +188,7 @@ export default function DepositPage() {
 							/>
 							<button
 								id='copyButton'
-								className='px-3 py-1 text-white rounded cursor-pointer bg-primary'
+								className='w-20 px-3 py-1 text-white rounded cursor-pointer bg-primary'
 								onClick={copyToClipboard}
 								disabled={copied}>
 								{!copied ? 'Copy' : 'Copied'}
