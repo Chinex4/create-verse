@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { toast } from 'react-toastify';
 import Image from 'next/image';
 import userImg from '@/public/user.png';
+import Link from 'next/link';
 
 export default function Page() {
 	const [user, setUser] = useState(null);
@@ -38,7 +39,7 @@ export default function Page() {
 				});
 
 			try {
-				setloadingNfts(true)
+				setloadingNfts(true);
 				fetch('/api/user/nfts', {
 					headers: {
 						Authorization: `Bearer ${token}`,
@@ -56,9 +57,9 @@ export default function Page() {
 						toast.error(`Failed to fetch NFTs: ${err.message}`);
 					});
 			} catch (error) {
-				toast.error(`Failed to fetch NFTs: ${error.message}`)
-			} finally{
-				setloadingNfts(false)
+				toast.error(`Failed to fetch NFTs: ${error.message}`);
+			} finally {
+				setloadingNfts(false);
 			}
 		}
 	}, [router]);
@@ -73,15 +74,18 @@ export default function Page() {
 	return (
 		<div className='mb-[15rem] px-6 lg:px-[20rem] mt-[6rem]'>
 			<section className=' space-y-4'>
-				<div className='w-[200px] rounded-full bg-gray-400 mx-auto'>
-					<Image
+				<div
+					className={`w-[200px] h-[200px] bg-[url(${
+						user.profilePicture || userImg
+					})] bg-center bg-cover bg-no-repeat rounded-full mx-auto`}>
+					{/* <Image
 						width={200}
 						height={200}
 						src={user.profilePicture || userImg}
 						alt='profilepic'
 						priority
 						className='rounded-full'
-					/>
+					/> */}
 				</div>
 				<div className='text-center space-y-2'>
 					<h2 className='text-2xl font-bold'>@{user.username}</h2>
@@ -100,6 +104,21 @@ export default function Page() {
 				<div className='space-y-2'>
 					<h2 className='font-semibold text-lg lg:text-xl'>Balance:</h2>
 					<p className='font-light'>0.0000ETH</p>
+				</div>
+
+				<div>
+					<Link
+						href={'/dashboard/deposit'}
+						Deposit
+						className='btn bg-primary hover:bg-primary/70 text-white px-10 py-3'>
+						Deposit
+					</Link>
+					<Link
+						href={'/dashboard/withdraw'}
+						Withdraw
+						className='btn bg-primary hover:bg-primary/70 text-white px-10 py-3'>
+						Withdraw
+					</Link>
 				</div>
 			</section>
 

@@ -89,7 +89,7 @@ export default function Page() {
 	};
 
 	return (
-		<div className='w-full lg:w-[35rem] mt-10 lg:mx-auto bg-white px-6 py-8 md:p-10 lg:p-16'>
+		<div className='w-full lg:w-[35rem] mt-20 lg:mx-auto bg-white px-6 py-8 md:p-10 lg:p-16'>
 			<h1 className='text-3xl md:text-4xl font-bold text-primary'>
 				Create New NFT
 			</h1>
@@ -221,7 +221,7 @@ export default function Page() {
 					<button
 						type='submit'
 						disabled={isSubmitting}
-						className={`btn bg-primary hover:bg-primary/70 text-white w-full ${
+						className={`btn bg-primary hover:bg-primary/70 text-white w-full md:w-[300px] ${
 							isSubmitting ? 'opacity-75 cursor-not-allowed' : ''
 						}`}>
 						{isSubmitting && (

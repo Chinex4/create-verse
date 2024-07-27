@@ -22,7 +22,7 @@ export default function DepositPage() {
 	const [isSubmitting, setIsSubmitting] = useState(false);
 	const [user, setUser] = useState(null);
 	const [filePreview, setFilePreview] = useState(null);
-    const [copied, setCopied] = useState(false)
+	const [copied, setCopied] = useState(false);
 	const router = useRouter();
 
 	const {
@@ -123,39 +123,47 @@ export default function DepositPage() {
 	}
 
 	return (
-		<section className='w-full lg:w-[55rem] mt-10 lg:mx-auto bg-white px-6 py-8 md:p-10 lg:p-16'>
-			<h1 className='text-3xl font-bold md:text-4xl'>Deposit</h1>
+		<section className='w-full lg:w-[35rem] mt-20 lg:mx-auto bg-white px-6 py-8 md:p-10 lg:p-16'>
+			<h1 className='text-3xl md:text-4xl font-bold text-primary'>Deposit</h1>
 			{errorMessage && (
 				<div className='p-4 mt-4 mb-4 text-red-700 bg-red-100 border border-red-400'>
 					{errorMessage}
-					<a className='link text-primary hover:text-primary/50' href='mailto:createverse@gmail.com'>Support</a>
+					<a
+						className='link text-primary hover:text-primary/50'
+						href='mailto:createverse@gmail.com'>
+						Support
+					</a>
 				</div>
 			)}
 			{successMessage && (
 				<div className='p-4 mt-4 mb-4 text-green-700 bg-green-100 border border-green-400'>
 					{successMessage}
-					<a className='link text-primary hover:text-primary/50' href='mailto:createverse@gmail.com'>Support</a>
+					<a
+						className='link text-primary hover:text-primary/50'
+						href='mailto:createverse@gmail.com'>
+						Support
+					</a>
 				</div>
 			)}
-			<div className='flex items-center w-full space-x-4 rounded-xl text-primary'>
+			<div className='mt-8 flex items-center w-full space-x-4 rounded-xl text-primary'>
 				<svg
 					xmlns='http://www.w3.org/2000/svg'
 					viewBox='0 0 24 24'
 					fill='currentColor'
-					className='w-20 h-20'>
+					className='w-12 h-12 hidden md:block'>
 					<path
 						fillRule='evenodd'
 						d='M9.401 3.003c1.155-2 4.043-2 5.197 0l7.355 12.748c1.154 2-.29 4.5-2.599 4.5H4.645c-2.309 0-3.752-2.5-2.598-4.5L9.4 3.003zM12 8.25a.75.75 0 01.75.75v3.75a.75.75 0 01-1.5 0V9a.75.75 0 01.75-.75zm0 8.25a.75.75 0 100-1.5.75.75 0 000 1.5z'
 						clip-rule='evenodd'
 					/>
 				</svg>
-				<p className='text-lg'>
+				<p className='text-sm'>
 					Please the only accepted digital currency is Ethereum(ETH),
 					CREATEVERSE won't be liable for any loss of funds. Thank you!
 				</p>
 			</div>
-			<div className='w-full p-6 space-y-8 rounded-xl'>
-				<p className='text-2xl font-bold text-gray-500'>
+			<div className='w-full space-y-8'>
+				<p className='text-lg font-bold text-gray-500'>
 					DEPOSIT AND SUBMIT PROOF TO TOP UP YOUR BALANCE
 				</p>
 
@@ -176,11 +184,11 @@ export default function DepositPage() {
 								readonly
 								type='text'
 								value={user.walletAddress ?? 'Please connect your wallet'}
-								className='w-48 px-2 py-1 border border-gray-300 rounded focus:outline-none focus:border-primary'
+								className='w-full px-2 py-1 border border-gray-300 rounded focus:outline-none focus:border-primary'
 							/>
 							<button
 								id='copyButton'
-								className='px-3 py-1 ml-2 text-white rounded cursor-pointer bg-primary'
+								className='px-3 py-1 text-white rounded cursor-pointer bg-primary'
 								onClick={copyToClipboard}
 								disabled={copied}>
 								{!copied ? 'Copy' : 'Copied'}
@@ -216,7 +224,9 @@ export default function DepositPage() {
 							placeholder='0.00 ETH'
 						/>
 						{errors.amount && (
-							<p className='mt-2 text-xs text-red-500'>{errors.amount.message}</p>
+							<p className='mt-2 text-xs text-red-500'>
+								{errors.amount.message}
+							</p>
 						)}
 					</div>
 					{/* Proof of payment Upload */}

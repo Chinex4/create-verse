@@ -48,7 +48,7 @@ export default function NFTPage({ nft, isLoggedin }) {
 
     const handleClick = () => {
         if (isLoggedin) {
-            user.walletAddress ? router.push('/dashboard/connect-wallet') : router.push('/dashboard/deposit')
+            user.walletAddress ? router.push('/dashboard/deposit') : router.push('/dashboard/connect-wallet')
         }
         else{
             router.push("/register/login")
@@ -73,7 +73,7 @@ export default function NFTPage({ nft, isLoggedin }) {
                 <p>{nft.description}</p>
                 <button
                     onClick={handleClick}
-                    className="px-4 py-2 mt-4 lg:mt-20 font-bold text-white rounded-lg bg-primary hover:bg-primary-focus"
+                    className="px-4 py-2 mt-10 md:mt-20 font-bold text-white rounded-lg bg-primary hover:bg-primary-focus"
                 >
                     Buy NFT
                 </button>

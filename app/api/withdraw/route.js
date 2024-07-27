@@ -16,6 +16,7 @@ export async function POST(request) {
 	try {
 		const data = await request.formData();
 		const amount = data.get('amount');
+		const address = data.get('address');
 		const token = data.get('token');
 
 		const decoded = jwt.verify(token, process.env.JWT_SECRET);

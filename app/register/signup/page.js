@@ -102,6 +102,7 @@ export default function Page() {
 						id='username'
 						name='username'
 						type='text'
+						placeholder='e.g johndoe4'
 						{...register('username')}
 						className='input input-bordered w-full'
 					/>
@@ -121,6 +122,7 @@ export default function Page() {
 						id='firstName'
 						name='firstName'
 						type='text'
+						placeholder='e.g John'
 						{...register('firstName')}
 						className='input input-bordered w-full'
 					/>
@@ -140,6 +142,7 @@ export default function Page() {
 						id='lastName'
 						name='lastName'
 						type='text'
+						placeholder='e.g Doe'
 						{...register('lastName')}
 						className='input input-bordered w-full'
 					/>
@@ -159,6 +162,7 @@ export default function Page() {
 						id='email'
 						name='email'
 						type='email'
+						placeholder='e.g johndoe@gmail.com'
 						{...register('email')}
 						className='input input-bordered w-full'
 					/>
@@ -176,6 +180,7 @@ export default function Page() {
 						id='password'
 						name='password'
 						type='password'
+						placeholder='e.g ******'
 						{...register('password')}
 						className='input input-bordered w-full'
 					/>
@@ -195,6 +200,7 @@ export default function Page() {
 						id='confirmPassword'
 						name='confirmPassword'
 						type='password'
+						placeholder='e.g ******'
 						{...register('confirmPassword')}
 						className='input input-bordered w-full'
 					/>
@@ -218,7 +224,7 @@ export default function Page() {
 					</button>
 				</div>
 				<div className='text-center'>
-					Already have an account? {' '}
+					Already have an account?{' '}
 					<Link
 						href='/register/login'
 						className='text-primary hover:text-primary/50 font-bold'>

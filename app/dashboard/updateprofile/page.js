@@ -112,7 +112,7 @@ export default function Page() {
 		}
 
 	return (
-		<div className='w-full lg:w-[35rem] mt-10 lg:mx-auto bg-white px-6 py-8 md:p-10 lg:p-16'>
+		<div className='w-full lg:w-[35rem] mt-20 lg:mx-auto bg-white px-6 py-8 md:p-10 lg:p-16'>
 			<h1 className='text-3xl md:text-4xl font-bold'>Update Profile</h1>
 			{errorMessage && (
 				<div className='mt-4 mb-4 p-4 bg-red-100 border border-red-400 text-red-700'>

@@ -86,6 +86,7 @@ export default function Page() {
 						id='username'
 						name='username'
 						type='text'
+						placeholder='e.g john4'
 						{...register('username')}
 						className='input input-bordered w-full'
 					/>
@@ -105,6 +106,7 @@ export default function Page() {
 						id='password'
 						name='password'
 						type='password'
+						placeholder='e.g ******'
 						{...register('password')}
 						className='input input-bordered w-full'
 					/>
