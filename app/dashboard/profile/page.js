@@ -74,8 +74,7 @@ export default function Page() {
 	return (
 		<div className='mb-[15rem] px-6 lg:px-[20rem] mt-[6rem]'>
 			<section className=' space-y-4'>
-				<div
-					className={`w-[200px] rounded-full mx-auto`}>
+				<div className={`w-[200px] rounded-full mx-auto`}>
 					<Image
 						width={200}
 						height={200}
@@ -98,7 +97,7 @@ export default function Page() {
 				</div>
 			</section>
 
-			<section className='flex items-center my-10 flex-col'>
+			<section className='flex items-center my-10 flex-col gap-4'>
 				<div className='space-y-2'>
 					<h2 className='font-semibold text-lg lg:text-xl'>Balance:</h2>
 					<p className='font-light'>0.0000ETH</p>
