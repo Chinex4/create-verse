@@ -98,7 +98,7 @@ export default function Page() {
 				</div>
 			</section>
 
-			<section className='flex justify-center my-10 flex-col'>
+			<section className='flex items-center my-10 flex-col'>
 				<div className='space-y-2'>
 					<h2 className='font-semibold text-lg lg:text-xl'>Balance:</h2>
 					<p className='font-light'>0.0000ETH</p>
