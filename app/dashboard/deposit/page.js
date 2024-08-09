@@ -158,13 +158,14 @@ export default function DepositPage() {
 					/>
 				</svg>
 				<p className='text-sm'>
-					Please the only accepted digital currency is Ethereum(ETH),
-					CREATEVERSE won't be liable for any loss of funds. Thank you!
+					Please confirm that you are depositing ETH to this address on the
+					ERC20 network. Mismatched address information may result in the
+					permanent loss of your assets.
 				</p>
 			</div>
 			<div className='mt-4 w-full space-y-8'>
 				<p className='text-lg font-bold text-gray-500'>
-					DEPOSIT AND SUBMIT PROOF TO TOP UP YOUR BALANCE
+					DEPOSIT TO TOP UP YOUR BALANCE
 				</p>
 
 				{/* <div className='relative text-left'>
@@ -195,12 +196,41 @@ export default function DepositPage() {
 							</button>
 						</div>
 					</div>
+					<div className='text-sm'>
+						<div className='flex justify-between'>
+							<span className='text-gray-500'>
+								Route Deposits To
+							</span>
+							<span className='font-semibold'>
+								Wallet Balance
+							</span>
+						</div>
+						<div className='flex justify-between'>
+							<span className='text-gray-500'>
+								Deposit Arrival
+							</span>
+							<span className='font-semibold'>
+								6 Confirmations
+							</span>
+						</div>
+						<div className='flex justify-between'>
+							<span className='text-gray-500'>
+								Withdrawal Unlocked
+							</span>
+							<span className='font-semibold'>
+								64 confirmations
+							</span>
+						</div>
+					</div>
 					<p className='text-sm text-warning'>
-						Copy this wallet address and proceed to payment. Network: Ethereum{' '}
+						<span className='font-semibold'>Network: ERC20</span>
 						<br />
-						NOTE: Please the only accepted digital currency is Ethereum(ETH),
-						<span className='font-semibold'>CREATEVERSE</span> won't be liable
-						for any loss of funds
+						<span>
+							Warning: If the current address is used, 6 block confirmations are
+							required before your deposited funds can be added to your
+							available balance.
+						</span>
+						
 					</p>
 				</div>
 

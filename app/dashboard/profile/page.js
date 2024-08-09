@@ -74,7 +74,12 @@ export default function Page() {
 	return (
 		<div className='mb-[15rem] px-6 lg:px-[20rem] mt-[6rem]'>
 			<section className=' space-y-4'>
-				<div className={`w-[200px] rounded-full mx-auto`}>
+				<div
+					className='rounded-full mx-auto w-[200px] h-[200px] bg-cover bg-center'
+					style={{
+						backgroundImage: `url(${user.profilePicture || userImg})`,
+					}}></div>
+				{/* <div className={`w-[200px] rounded-full mx-auto`}>
 					<Image
 						width={200}
 						height={200}
@@ -83,7 +88,7 @@ export default function Page() {
 						priority
 						className='rounded-full'
 					/>
-				</div>
+				</div> */}
 				<div className='text-center space-y-2'>
 					<h2 className='text-2xl font-bold'>@{user.username}</h2>
 					{user.walletAddress && (
@@ -135,14 +140,10 @@ export default function Page() {
 							<div
 								key={nft.id}
 								className='border p-4 rounded-lg'>
-								<Image
-									src={`${nft.fileUrl}`}
-									alt={nft.name}
-									className='w-full h-48 object-cover rounded-md mb-4'
-									priority
-									width={'99'}
-									height={48}
-								/>
+								<div
+									className='w-full h-48 object-cover rounded-md bg-center bg-contain bg-no-repeat mb-4'
+									style={{ backgroundImage: `url(${nft.fileUrl})` }}></div>
+								
 								<h2 className='text-lg font-semibold'>{nft.name}</h2>
 								{nft.description && (
 									<p className='text-sm text-gray-500'>{nft.description}</p>

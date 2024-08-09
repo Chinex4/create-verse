@@ -4,14 +4,12 @@ import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import Link from 'next/link';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 
 const schema = yup.object().shape({
 	file: yup.mixed().required('Choose an Image to upload'),
-	amount: yup.number().required("Please specify an amount")
 	// confirmNewPassword: yup
 	// 	.string()
 	// 	.oneOf([yup.ref('password')], 'Passwords must match'),
