@@ -67,9 +67,8 @@ export default function Dashboard() {
 				<ul className='mt-10 carousel w-full carousel-center p-4 lg:py-8 lg:px-4 space-x-4 bg-base-200 rounded-box'>
 					{nfts.map(({ id, fileUrl, name, price, owner }) => {
 						return (
-							<div className='carousel-item p-0'>
+							<div key={id} className='carousel-item p-0'>
 								<div
-									key={id}
 									className='card lg:hover:-translate-y-4 hover:cursor-pointer duration-500 card-compact w-[15rem] lg:w-72 bg-base-100 shadow-xl'>
 									<div
 										className='rounded-xl w-full h-[240px] bg-cover bg-center'
