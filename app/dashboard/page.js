@@ -65,6 +65,7 @@ export default function Dashboard() {
 				{/* <NFTCarousel isLoggedIn={true} /> */}
 
 				<ul className='mt-10 carousel w-full carousel-center p-4 lg:py-8 lg:px-4 space-x-4 bg-base-200 rounded-box'>
+					{!nfts && <p className="text-2xl text-center">LOADING</p>}
 					{nfts.map(({ id, fileUrl, name, price, owner }) => {
 						return (
 							<div key={id} className='carousel-item p-0'>
